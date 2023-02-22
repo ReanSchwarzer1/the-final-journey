@@ -10,7 +10,7 @@ public class NarrativeInteraction : MonoBehaviour
     private int _gameState = 0;
 
     [SerializeField] private TextMeshProUGUI _narrativeText;
-    [SerializeField] private TextMeshProUGUI _playerChoiceText;
+    [SerializeField] private TextMeshProUGUI _playerChoiceText1, _playerChoiceText2;
 
     public string[] sentences;
     public int _angerCnt; //emotion counters
@@ -21,7 +21,7 @@ public class NarrativeInteraction : MonoBehaviour
     // public int _IDKCount;
 
 
-    //[SerializeField] private Button _playerChoice1, _playerChoice2, _playerChoice3;
+    [SerializeField] private Button _playerChoice1, _playerChoice2;
 
     // Start is called before the first frame update
     void Start()
@@ -41,19 +41,23 @@ public class NarrativeInteraction : MonoBehaviour
         {
             case 0:
                 _narrativeText.text = "Hello team, how are y'all??";
-                _playerChoiceText.text = "1. Pretty good\n2. Meh";
+                _playerChoiceText1.text = "1. Pretty good";
+                _playerChoiceText2.text = "2. Meh";
                 break;
             case 1:
                 _narrativeText.text = "Oh I see, awesome then. Ready for 603?";
-                _playerChoiceText.text = "1. Yep\n2. Nope";
+                _playerChoiceText1.text = "1. Yep";
+                _playerChoiceText2.text = "2. Nope";
                 break;
             case 2:
                 _narrativeText.text = "That's kinda sad, but I empathize";
-                _playerChoiceText.text = "";
+                _playerChoiceText1.text = "";
+                _playerChoiceText2.text = "";
                 break;
             case 3:
                 _narrativeText.text = "LESSSSSS GOOOOOOO!";
-                _playerChoiceText.text = "";
+                _playerChoiceText1.text = "";
+                _playerChoiceText2.text = "";
                 break;
         }
     }
@@ -93,11 +97,13 @@ public class NarrativeInteraction : MonoBehaviour
                 {
                     _gameState = 1;
                     Debug.Log("Typed 1 on Keyboard");
+                    Debug.Log("Clicked button 1");
                 }
                 else if (playerChoice == 2)
                 {
                     _gameState = 2;
                     Debug.Log("Typed 2 on Keyboard");
+                    Debug.Log("Clicked button 2");
                 }
                 break;
             case 1:
@@ -105,11 +111,13 @@ public class NarrativeInteraction : MonoBehaviour
                 {
                     _gameState = 3;
                     Debug.Log("Typed 1 on Keyboard");
+                    Debug.Log("Clicked button 1");
                 }
                 else if (playerChoice == 2)
                 {
                     _gameState = 2;
                     Debug.Log("Typed 2 on Keyboard");
+                    Debug.Log("Clicked button 2");
                 }
                 break;
             case 3:
