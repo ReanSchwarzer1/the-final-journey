@@ -83,6 +83,22 @@ public class NarrativeInteraction : MonoBehaviour
         }
     }
 
+ /*
+    void ButtonInputHandler()
+    {
+        if (_playerChoice1.onClick = true)
+        {
+            ChoiceHandler(1);
+        }
+
+        else if (_playerChoice2.onClick = true)
+        {
+            ChoiceHandler(2);
+        }
+    }
+
+*/
+
     void StateShow()
     {
         StatesList();
