@@ -10,6 +10,7 @@ public class NarrativeInteraction : MonoBehaviour
     private int _gameState = 0;
 
     [SerializeField] private TextMeshProUGUI _narrativeText;
+    [SerializeField] private GameObject _choiceButtonGUI;
     [SerializeField] private TextMeshProUGUI _playerChoiceText1, _playerChoiceText2;
 
     public string[] sentences;
@@ -43,21 +44,25 @@ public class NarrativeInteraction : MonoBehaviour
                 _narrativeText.text = "Hello team, how are y'all??";
                 _playerChoiceText1.text = "1. Pretty good";
                 _playerChoiceText2.text = "2. Meh";
+                _choiceButtonGUI.SetActive(true);
                 break;
             case 1:
                 _narrativeText.text = "Oh I see, awesome then. Ready for 603?";
                 _playerChoiceText1.text = "1. Yep";
                 _playerChoiceText2.text = "2. Nope";
+                _choiceButtonGUI.SetActive(true);
                 break;
             case 2:
                 _narrativeText.text = "That's kinda sad, but I empathize";
                 _playerChoiceText1.text = "";
                 _playerChoiceText2.text = "";
+                _choiceButtonGUI.SetActive(false);
                 break;
             case 3:
                 _narrativeText.text = "LESSSSSS GOOOOOOO!";
                 _playerChoiceText1.text = "";
                 _playerChoiceText2.text = "";
+                _choiceButtonGUI.SetActive(false);
                 break;
         }
     }
