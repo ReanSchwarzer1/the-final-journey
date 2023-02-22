@@ -14,7 +14,10 @@ public class NarrativeInteraction : MonoBehaviour
 
     public string[] sentences;
     public int _angerCnt; //emotion counters
-    public int _happyCnt;
+    public int _happyCnt; //currently thinking that the emotion counter can go through
+                          //every choice in the every game state, and when the player
+                          //chooses one choice, the pointer counts +1 and so on
+                          // by using a foreach loop in each sentence
     // public int _IDKCount;
 
 
@@ -65,6 +68,15 @@ public class NarrativeInteraction : MonoBehaviour
         {
             ChoiceHandler(2);
         }
+
+        if (Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            ChoiceHandler(1);
+        }
+        else if (Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            ChoiceHandler(2);
+        }
     }
 
     void StateShow()
@@ -72,30 +84,29 @@ public class NarrativeInteraction : MonoBehaviour
         StatesList();
     }
 
-    // Handles a player choice
-    public void ChoiceHandler(int choice)
+    public void ChoiceHandler(int playerChoice) //player choices changes the gamestates accordingly
     {
         switch (_gameState)
         {
             case 0:
-                if (choice == 1)
+                if (playerChoice == 1)
                 {
                     _gameState = 1;
                     Debug.Log("Typed 1 on Keyboard");
                 }
-                else if (choice == 2)
+                else if (playerChoice == 2)
                 {
                     _gameState = 2;
                     Debug.Log("Typed 2 on Keyboard");
                 }
                 break;
             case 1:
-                if (choice == 1)
+                if (playerChoice == 1)
                 {
                     _gameState = 3;
                     Debug.Log("Typed 1 on Keyboard");
                 }
-                else if (choice == 2)
+                else if (playerChoice == 2)
                 {
                     _gameState = 2;
                     Debug.Log("Typed 2 on Keyboard");
