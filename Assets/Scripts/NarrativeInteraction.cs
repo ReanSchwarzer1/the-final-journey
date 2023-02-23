@@ -36,81 +36,67 @@ public class NarrativeInteraction : MonoBehaviour
         PlayerTextInputHandler();
     }
 
-    void StateList()
+    void StateShow()
     {
-        switch (_gameState)
+        StateDictionary();
+    }
+
+    void StateDictionary()
+    {
+        Dictionary<int, (string, string, string, bool)> _playerGameStateData = new Dictionary<int, (string, string, string, bool)>()
         {
-            case 0:
-                _narrativeText.text = "Hello team, how are y'all?";
-                _playerChoiceText1.text = "1. Pretty good";
-                _playerChoiceText2.text = "2. Meh";
-                _choiceButtonUGUI.SetActive(true);
+            {0, ("Hello team, how are y'all?", "[1] Pretty good", "[2] Meh", true)},
+            {1, ("Oh I see, awesome then. Ready for 603?", "[1] Yep", "[2] Nope", true)},
+            {2, ("That's kinda sad, but I empathize", "", "", false) },
+            {3, ("LESSSSSS GOOOOOOO!", "", "", false) }
+        };
 
-                break;
-            case 1:
-                _narrativeText.text = "Oh I see, awesome then. Ready for 603?";
-                _playerChoiceText1.text = "1. Yep";
-                _playerChoiceText2.text = "2. Nope";
-                _choiceButtonUGUI.SetActive(true);
-
-                break;
-            case 2:
-                _narrativeText.text = "That's kinda sad, but I empathize";
-                _playerChoiceText1.text = "";
-                _playerChoiceText2.text = "";
-                _choiceButtonUGUI.SetActive(false);
-
-                break;
-            case 3:
-                _narrativeText.text = "LESSSSSS GOOOOOOO!";
-                _playerChoiceText1.text = "";
-                _playerChoiceText2.text = "";
-                _choiceButtonUGUI.SetActive(false);
-
-                break;
-        }
+        (string _story, string _storyChoice1, string _storyChoice2, bool _disableButtons) = _playerGameStateData[_gameState];
+        _narrativeText.text = _story;
+        _playerChoiceText1.text = _storyChoice1;
+        _playerChoiceText2.text = _storyChoice2;
+        _choiceButtonUGUI.SetActive(_disableButtons);
     }
 
-    void PlayerTextInputHandler()
-    {
-        KeypadNumInputHandler();
-        AlphaNumInputHandler();
-
-
-    }
 
     public void ChoiceInputHandler(int playerchoice) //player choices change the gamestates accordingly
     {
         switch (_gameState)
         {
             case 0:
-                if (playerchoice == 1)
+                switch (playerchoice)
                 {
-                    _gameState = 1;
-                    Debug.Log("Typed 1 on Keyboard");
-                    Debug.Log("Clicked button 1");
-                }
-                else if (playerchoice == 2)
-                {
-                    _gameState = 2;
-                    Debug.Log("Typed 2 on Keyboard");
-                    Debug.Log("Clicked button 2");
+                    case 1:
+                        _gameState = 1;
+                        Debug.Log("Typed 1 on Keyboard");
+                        Debug.Log("Clicked button 1");
+
+                        break;
+                    case 2:
+                        _gameState = 2;
+                        Debug.Log("Typed 2 on Keyboard");
+                        Debug.Log("Clicked button 2");
+
+                        break;
                 }
 
                 break;
 
             case 1:
-                if (playerchoice == 1)
+                switch (playerchoice)
                 {
-                    _gameState = 3;
-                    Debug.Log("Typed 1 on Keyboard");
-                    Debug.Log("Clicked button 1");
-                }
-                else if (playerchoice == 2)
-                {
-                    _gameState = 2;
-                    Debug.Log("Typed 2 on Keyboard");
-                    Debug.Log("Clicked button 2");
+                    case 1:
+                        _gameState = 3;
+                        Debug.Log("Typed 1 on Keyboard");
+                        Debug.Log("Clicked button 1");
+
+                        break;
+                    case 2:
+                        _gameState = 2;
+                        Debug.Log("Typed 2 on Keyboard");
+                        Debug.Log("Clicked button 2");
+
+                        break;
                 }
 
                 break;
@@ -122,10 +108,17 @@ public class NarrativeInteraction : MonoBehaviour
         StateShow();
     }
 
-    void StateShow()
+
+
+    void PlayerTextInputHandler()
     {
-        StateList();
+        KeypadNumInputHandler();
+        AlphaNumInputHandler();
+
+
     }
+
+   
 
     /*
    void ButtonInputHandler()
@@ -166,11 +159,6 @@ public class NarrativeInteraction : MonoBehaviour
             ChoiceInputHandler(2);
         }
     }
-
-
-
-
-
 
 
 
