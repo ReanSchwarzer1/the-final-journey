@@ -344,7 +344,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1393111041}
         m_TargetAssemblyTypeName: NarrativeInteraction, Assembly-CSharp
-        m_MethodName: ChoiceHandler
+        m_MethodName: ChoiceInputHandler
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -743,15 +743,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab0171cdf4ed6ee41bcbaeaf01483329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _narrativeText: {fileID: 1393111039}
-  _choiceButtonGUI: {fileID: 1619687464}
   _playerChoiceText1: {fileID: 1176827153}
   _playerChoiceText2: {fileID: 8895581}
+  _choiceButtonUGUI: {fileID: 1619687464}
+  _narrativeText: {fileID: 1393111039}
+  _loreText: {fileID: 0}
+  _playerChoice1: {fileID: 232009145}
+  _playerChoice2: {fileID: 1662716445}
   sentences: []
   _angerCnt: 0
   _happyCnt: 0
-  _playerChoice1: {fileID: 232009145}
-  _playerChoice2: {fileID: 1662716445}
 --- !u!1 &1619687464
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,7 +877,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1393111041}
         m_TargetAssemblyTypeName: NarrativeInteraction, Assembly-CSharp
-        m_MethodName: ChoiceHandler
+        m_MethodName: ChoiceInputHandler
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
