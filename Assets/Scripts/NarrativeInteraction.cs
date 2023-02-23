@@ -43,15 +43,15 @@ public class NarrativeInteraction : MonoBehaviour
 
     void StateDictionary()
     {
-        Dictionary<int, (string, string, string, bool)> _playerGameStateData = new Dictionary<int, (string, string, string, bool)>()
+        Dictionary<int, (bool, string, string, string)> _playerGameStateData = new Dictionary<int, (bool, string, string, string)>()
         {
-            {0, ("Hello team, how are y'all?", "[1] Pretty good", "[2] Meh", true)},
-            {1, ("Oh I see, awesome then. Ready for 603?", "[1] Yep", "[2] Nope", true)},
-            {2, ("That's kinda sad, but I empathize", "", "", false) },
-            {3, ("LESSSSSS GOOOOOOO!", "", "", false) }
+            {0, (true, "Hello team, how are y'all?", "[1] Pretty good", "[2] Meh")},
+            {1, (true, "Oh I see, awesome then. Ready for 603?", "[1] Yep", "[2] Nope")},
+            {2, (false, "That's kinda sad, but I empathize", "", "")},
+            {3, (false, "LESSSSSS GOOOOOOO!", "", "")}
         };
 
-        (string _story, string _storyChoice1, string _storyChoice2, bool _disableButtons) = _playerGameStateData[_gameState];
+        (bool _disableButtons, string _story, string _storyChoice1, string _storyChoice2) = _playerGameStateData[_gameState];
         _narrativeText.text = _story;
         _playerChoiceText1.text = _storyChoice1;
         _playerChoiceText2.text = _storyChoice2;
