@@ -69,15 +69,14 @@ public class NarrativeInteraction : MonoBehaviour
 
     void PlayerInputHandler()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            ChoiceHandler(1);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            ChoiceHandler(2);
-        }
 
+        KeypadNumInput();
+        AlphaNumInput();
+
+    }
+
+    void KeypadNumInput()
+    {
         if (Input.GetKeyDown(KeyCode.Keypad1))
         {
             ChoiceHandler(1);
@@ -87,6 +86,19 @@ public class NarrativeInteraction : MonoBehaviour
             ChoiceHandler(2);
         }
     }
+
+    void AlphaNumInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            ChoiceHandler(1);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            ChoiceHandler(2);
+        }
+    }
+
 
  /*
     void ButtonInputHandler()
