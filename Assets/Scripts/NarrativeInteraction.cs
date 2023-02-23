@@ -11,8 +11,9 @@ public class NarrativeInteraction : MonoBehaviour
     private int _gameState = 0;
 
     [SerializeField]private TextMeshProUGUI _playerChoiceText1, _playerChoiceText2;
-    [SerializeField]private GameObject _choiceButtonUGUI;
+    [SerializeField]private GameObject _choiceButton1UGUI, _choiceButton2UGUI;
     [SerializeField]private TextMeshProUGUI _narrativeText, _loreText;
+    //public string _loreT;
 
     [SerializeField] private Button _playerChoice1, _playerChoice2;
     public string[] sentences;
@@ -22,6 +23,13 @@ public class NarrativeInteraction : MonoBehaviour
                           //chooses one choice, the pointer counts +1 and so on
                           // by using a foreach loop in each sentence
                           // public int _IDKCount;
+
+
+    public float sentenceRate;
+    public float sentenceDelay;
+    private float timer;
+    private int index = 0;
+    public GameObject textObject;
 
 
     // Start is called before the first frame update
@@ -43,20 +51,49 @@ public class NarrativeInteraction : MonoBehaviour
 
     void StateDictionary()
     {
-        Dictionary<int, (bool, string, string, string)> _playerGameStateData = new Dictionary<int, (bool, string, string, string)>()
+        NarrativeTimer();
+
+        Dictionary<int, (bool, bool, string, string, string, string)> _playerGameStateData = new Dictionary<int, (bool, bool, string, string, string, string)>()
         {
-            {0, (true, "Hello team, how are y'all?", "[1] Pretty good", "[2] Meh")},
-            {1, (true, "Oh I see, awesome then. Ready for 603?", "[1] Yep", "[2] Nope")},
-            {2, (false, "That's kinda sad, but I empathize", "", "")},
-            {3, (false, "LESSSSSS GOOOOOOO!", "", "")}
+            {0, (true, false, "","Activating companion protocol. ", "[1] Continue", "")},
+            {1, (true, false, "","Life support at 89% capacity. ", "[1] Continue", "")},
+            {2, (true, false, "","In-Cryo communication online. ", "[1] Continue", "")},
+            {3, (true, false, "","Hello Q, can you hear me?. ", "[1] Yes? Yes, but I cannot see you.", "")},
+            {4, (true, false, "","That’s alright, can you tell me how you are feeling?. ", "[1] I feel a little strange, not quite here.", "")},
+            {5, (true, false, "","I assure you, you are fine. You are currently in cryogenic sleep. Here are your vitals:. ", "[1] I see, who are you?", "[2] ")}
         };
 
-        (bool _disableButtons, string _story, string _storyChoice1, string _storyChoice2) = _playerGameStateData[_gameState];
+        (bool _disableButtons1, bool _disableButtons2, string _lore, string _story, string _storyChoice1, string _storyChoice2) = _playerGameStateData[_gameState];
         _narrativeText.text = _story;
+        _loreText.text = _lore;
         _playerChoiceText1.text = _storyChoice1;
         _playerChoiceText2.text = _storyChoice2;
-        _choiceButtonUGUI.SetActive(_disableButtons);
+        _choiceButton1UGUI.SetActive(_disableButtons1);
+        _choiceButton2UGUI.SetActive(_disableButtons2);
     }
+
+
+    void NarrativeTimer()
+    {
+        if (timer >= sentenceRate)
+        {
+
+            timer = 0;
+
+            if (_narrativeText.text[index] != '.')
+                textObject.GetComponent<TextMeshProUGUI>().text += _narrativeText.text[index];
+            else
+            {
+                textObject.GetComponent<TextMeshProUGUI>().text = "";
+                timer = -sentenceDelay;
+            }
+
+            index++;
+        }
+
+        timer += Time.deltaTime;
+    }
+
 
 
     public void ChoiceInputHandler(int playerchoice) //player choices change the gamestates accordingly
@@ -72,12 +109,6 @@ public class NarrativeInteraction : MonoBehaviour
                         Debug.Log("Clicked button 1");
 
                         break;
-                    case 2:
-                        _gameState = 2;
-                        Debug.Log("Typed 2 on Keyboard");
-                        Debug.Log("Clicked button 2");
-
-                        break;
                 }
 
                 break;
@@ -86,22 +117,68 @@ public class NarrativeInteraction : MonoBehaviour
                 switch (playerchoice)
                 {
                     case 1:
-                        _gameState = 3;
+                        _gameState = 2;
                         Debug.Log("Typed 1 on Keyboard");
                         Debug.Log("Clicked button 1");
 
                         break;
-                    case 2:
-                        _gameState = 2;
-                        Debug.Log("Typed 2 on Keyboard");
-                        Debug.Log("Clicked button 2");
+                }
+                break;
+
+            case 2:
+                switch (playerchoice)
+                {
+                    case 1:
+                        _gameState = 3;
+                        Debug.Log("Typed 1 on Keyboard");
+                        Debug.Log("Clicked button 1");
 
                         break;
                 }
 
                 break;
 
-            case 2:
+            case 3:
+                switch (playerchoice)
+                {
+                    case 1:
+                        _gameState = 4;
+                        Debug.Log("Typed 1 on Keyboard");
+                        Debug.Log("Clicked button 1");
+
+                        break;
+                }
+                break;
+
+            case 4:
+                switch (playerchoice)
+                {
+                    case 1:
+                        _gameState = 5;
+                        Debug.Log("Typed 1 on Keyboard");
+                        Debug.Log("Clicked button 1");
+
+                        break;
+                }
+
+                break;
+
+            case 5:
+                switch (playerchoice)
+                {
+                    case 1:
+                        _gameState = 6;
+                        Debug.Log("Typed 1 on Keyboard");
+                        Debug.Log("Clicked button 1");
+
+                        break;
+                    case 2:
+                        _gameState = 8;
+                        Debug.Log("Typed 2 on Keyboard");
+                        Debug.Log("Clicked button 2");
+
+                        break;
+                }
 
                 break;
         }
