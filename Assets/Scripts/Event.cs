@@ -6,6 +6,7 @@ public class Event : MonoBehaviour
 {
     // Fields used for displaying a warning message
     [SerializeField] private GameObject warningPrefab;
+    [SerializeField] protected GameObject player;
     protected bool isWarningPlaying = true;
 	private GameObject warning;
 	private Color warningColor;

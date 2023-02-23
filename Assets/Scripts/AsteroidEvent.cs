@@ -41,7 +41,20 @@ public class AsteroidEvent : Event
                 asteroids.RemoveAt(0);
                 Destroy(oldAsteroid);
             }
-        }
+
+            if (Input.GetKey(KeyCode.W))
+            {
+                player.GetComponent<Rigidbody2D>().velocity = Vector2.up * 3f;
+            }
+            else if(Input.GetKey(KeyCode.S))
+            {
+				player.GetComponent<Rigidbody2D>().velocity = Vector2.down * 3f;
+			}
+			else
+			{
+				player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+			}
+		}
 	}
 
     // Spawn an asteroid at a random location off-screen
