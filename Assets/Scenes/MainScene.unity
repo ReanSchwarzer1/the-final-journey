@@ -1099,7 +1099,8 @@ MonoBehaviour:
   _narrativeTextObject: {fileID: 1393111039}
   _choice1Object: {fileID: 232009145}
   _choice2Object: {fileID: 1662716445}
-  storyBlocks:
+  _narrationSpeed: 0.1
+  _narrativeBlocks:
   - _narrativeText: Activating companion protocol...
     _choice1Text: Continue
     _choice1States: 1
@@ -1121,21 +1122,21 @@ MonoBehaviour:
   - _narrativeText: Hello Q, can you hear me?.
     _choice1Text: Yes? Yes, but I cannot see you.
     _choice1States: 4
-    _choice2Text: 
-    _choice2States: 3
-    _button2EnableBool: 0
+    _choice2Text: Continue
+    _choice2States: -1
+    _button2EnableBool: 1
   - _narrativeText: "That\u2019s alright, can you tell me how you are feeling?"
     _choice1Text: I feel a little strange, not quite here.
     _choice1States: 5
-    _choice2Text: 
-    _choice2States: 4
-    _button2EnableBool: 0
+    _choice2Text: Continue
+    _choice2States: -1
+    _button2EnableBool: 1
   - _narrativeText: 'I assure you, you are fine. You are currently in cryogenic sleep.
       Here are your vitals:'
     _choice1Text: I see, who are you?
-    _choice1States: 6
-    _choice2Text: Hmmm
-    _choice2States: 5
+    _choice1States: -6
+    _choice2Text: Continue
+    _choice2States: -1
     _button2EnableBool: 1
 --- !u!1 &1903139312
 GameObject:
