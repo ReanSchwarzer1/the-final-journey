@@ -1096,9 +1096,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7743cc97a38827041903a2ec938399ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainText: {fileID: 1393111039}
-  option1: {fileID: 232009145}
-  option2: {fileID: 1662716445}
+  _narrativeTextObject: {fileID: 1393111039}
+  _choice1Object: {fileID: 232009145}
+  _choice2Object: {fileID: 1662716445}
   storyBlocks:
   - _narrativeText: Activating companion protocol...
     _choice1Text: Continue
