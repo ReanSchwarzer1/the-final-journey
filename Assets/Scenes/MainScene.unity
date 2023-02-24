@@ -160,8 +160,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14.7812, y: -174}
-  m_SizeDelta: {x: 824.1571, y: 30}
+  m_AnchoredPosition: {x: 14.782, y: -157.03}
+  m_SizeDelta: {x: 824.16, y: 89.937}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &232009145
 MonoBehaviour:
@@ -378,7 +378,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: -25.909576, z: 0, w: -23.80017}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -902,8 +902,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14.781, y: -217}
-  m_SizeDelta: {x: 824.16, y: 30}
+  m_AnchoredPosition: {x: 14.782, y: -312.47003}
+  m_SizeDelta: {x: 824.16, y: 85.0352}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1662716445
 MonoBehaviour:
@@ -1099,7 +1099,7 @@ MonoBehaviour:
   _narrativeTextObject: {fileID: 1393111039}
   _choice1Object: {fileID: 232009145}
   _choice2Object: {fileID: 1662716445}
-  _narrationSpeed: 0.1
+  _narrationSpeed: 0.05
   _narrativeBlocks:
   - _narrativeText: Activating companion protocol...
     _choice1Text: Continue
@@ -1119,22 +1119,87 @@ MonoBehaviour:
     _choice2Text: 
     _choice2States: -1
     _button2EnableBool: 0
-  - _narrativeText: Hello Q, can you hear me?.
-    _choice1Text: Yes? Yes, but I cannot see you.
+  - _narrativeText: 
+    _choice1Text: Hello Q, can you hear me?.
     _choice1States: 4
     _choice2Text: Continue
     _choice2States: -1
-    _button2EnableBool: 1
-  - _narrativeText: "That\u2019s alright, can you tell me how you are feeling?"
-    _choice1Text: I feel a little strange, not quite here.
+    _button2EnableBool: 0
+  - _narrativeText: Yes? Yes, but I cannot see you.
+    _choice1Text: "That\u2019s alright, can you tell me how you are feeling?"
     _choice1States: 5
     _choice2Text: Continue
     _choice2States: -1
     _button2EnableBool: 1
-  - _narrativeText: 'I assure you, you are fine. You are currently in cryogenic sleep.
-      Here are your vitals:'
-    _choice1Text: I see, who are you?
-    _choice1States: -6
+  - _narrativeText: I feel a little strange, not quite here.
+    _choice1Text: I assure you, you are fine. You are currently in cryogenic sleep.
+      Here are your vitals.
+    _choice1States: 6
+    _choice2Text: Continue
+    _choice2States: -1
+    _button2EnableBool: 1
+  - _narrativeText: I see, who are you?
+    _choice1Text: I am your companion, an artificial intelligence built on the Gargantua
+      framework. I am here to help you assess your situation and make decisions that
+      best suit you.
+    _choice1States: 7
+    _choice2Text: Continue
+    _choice2States: -1
+    _button2EnableBool: 1
+  - _narrativeText: Why am I in cryogenic sleep?
+    _choice1Text: What is the last thing you remember?
+    _choice1States: 8
+    _choice2Text: Continue
+    _choice2States: -1
+    _button2EnableBool: 1
+  - _narrativeText: "I was working\u2026 installing some fixes to the hangar\u2026"
+    _choice1Text: You were aboard the Solace.
+    _choice1States: 9
+    _choice2Text: Continue
+    _choice2States: -1
+    _button2EnableBool: 1
+  - _narrativeText: Oh God, I remember now. What happened to the Solace?!
+    _choice1Text: The Solace faced an engine crisis one week ago, you are currently
+      in an Escape Pod XM103. The ship has exploded
+    _choice1States: 10
+    _choice2Text: Continue
+    _choice2States: -1
+    _button2EnableBool: 1
+  - _narrativeText: "No\u2026 It can\u2019t be\u2026.How many escape pods were deployed?"
+    _choice1Text: Your memory will return momentarily, stay calm.
+    _choice1States: 11
+    _choice2Text: Continue
+    _choice2States: -1
+    _button2EnableBool: 1
+  - _narrativeText: How many?!
+    _choice1Text: Four hundred and twenty one were deployed before the explosion.
+      Pod XM103 was the only one to survive
+    _choice1States: 12
+    _choice2Text: The data is unclear, however this pod seems to be the only one
+      traveling in this trajectory.
+    _choice2States: 12
+    _button2EnableBool: 1
+  - _narrativeText: ........
+    _choice1Text: Do you have any other questions?
+    _choice1States: 13
+    _choice2Text: Continue
+    _choice2States: -1
+    _button2EnableBool: 1
+  - _narrativeText: "I don\u2019t know\u2026\u2026\u2026\u2026\u2026. Why is my heart
+      rate not changing?"
+    _choice1Text: "During InCryo communication your body functions are disconnected
+      from your brain\u2019s response framework, things you hear or say will not
+      affect your body as you are not really awake."
+    _choice1States: 14
+    _choice2Text: Continue
+    _choice2States: -1
+    _button2EnableBool: 1
+  - _narrativeText: "I don\u2019t know\u2026\u2026\u2026\u2026\u2026. Why is my heart
+      rate not changing?"
+    _choice1Text: "During InCryo communication your body functions are disconnected
+      from your brain\u2019s response framework, things you hear or say will not
+      affect your body as you are not really awake."
+    _choice1States: 15
     _choice2Text: Continue
     _choice2States: -1
     _button2EnableBool: 1
