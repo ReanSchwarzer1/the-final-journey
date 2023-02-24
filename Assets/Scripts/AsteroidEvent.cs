@@ -10,6 +10,8 @@ public class AsteroidEvent : Event
 	private List<GameObject> asteroids = new List<GameObject>();
     private Vector2 spawnPosition;
     private bool isSpawning = false;
+    private int numAsteroidsSpawned = 0;
+    private int numAsteroidsDestroyed = 0;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -28,20 +30,6 @@ public class AsteroidEvent : Event
         // When the warning is done, spawn asteroids
         if (!isWarningPlaying)
         {
-            if (!isSpawning)
-            {
-                isSpawning = true;
-                StartCoroutine(SpawnAsteroid());
-            }
-
-            // Destroy old asteroids
-            if (asteroids.Count > 0 && asteroids[0].transform.position.x > Camera.main.aspect * Camera.main.orthographicSize + 8)
-            {
-                GameObject oldAsteroid = asteroids[0];
-                asteroids.RemoveAt(0);
-                Destroy(oldAsteroid);
-            }
-
             if (Input.GetKey(KeyCode.W))
             {
                 player.GetComponent<Rigidbody2D>().velocity = Vector2.up * 3f;
@@ -54,6 +42,30 @@ public class AsteroidEvent : Event
 			{
 				player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 			}
+
+			if (!isSpawning)
+			{
+				if (numAsteroidsSpawned < 20)
+				{
+					isSpawning = true;
+					StartCoroutine(SpawnAsteroid());
+				}
+			}
+
+			// Destroy old asteroids
+			if (asteroids.Count > 0 && asteroids[0].transform.position.x > Camera.main.aspect * Camera.main.orthographicSize + 8)
+			{
+				GameObject oldAsteroid = asteroids[0];
+				asteroids.RemoveAt(0);
+				Destroy(oldAsteroid);
+				numAsteroidsDestroyed++;
+
+				if (numAsteroidsDestroyed == 20)
+				{
+					player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+					Destroy(gameObject);
+				}
+			}
 		}
 	}
 
@@ -65,6 +77,7 @@ public class AsteroidEvent : Event
         spawnPosition.y = Random.Range(-Camera.main.orthographicSize, Camera.main.orthographicSize);
         asteroids.Add(Instantiate(asteroidPrefab, spawnPosition, Quaternion.identity));
         asteroids[asteroids.Count - 1].GetComponent<Rigidbody2D>().velocity = asteroidSpeed;
+        numAsteroidsSpawned++;
 
         isSpawning = false;
 
