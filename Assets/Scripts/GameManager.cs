@@ -55,15 +55,39 @@ public class GameManager : MonoBehaviour
         StartCoroutine(NarrativeWriter(_narrativeBlocks[0]._narrativeText));
         DisplayBlock(_narrativeBlocks[0]);
 
-        if (currentBlock._choice2States < 3) // for the first 3 states, we do not need a button 2
+        // for the first 3 states, we do not need a button 2
+        switch (currentBlock._choice2States)
         {
-            _choice2Object.interactable = false;
-        }
+            case < 3:
+                _choice2Object.interactable = false;
+                break;
 
-        if (currentBlock._choice2States >= 3) // for the first 3 states, we do not need a button 2
-        {
-            _choice2Object.interactable = true;
+            case >= 3:
+                _choice2Object.interactable = true;
+                break;
         }
+    }
+
+    private void Update()
+    {
+        /*
+        if (timer >= sentenceRate)
+        {
+
+            timer = 0;
+
+            if (NarrativeText[index] != '/')
+                textObject.GetComponent<TextMeshProUGUI>().text += NarrativeText[index];
+            else
+            {
+                textObject.GetComponent<TextMeshProUGUI>().text = "";
+                timer = -sentenceDelay;
+            }
+
+            index++;
+        }
+        timer += Time.deltaTime;
+        */
     }
 
     void DisplayBlock(StoryBlock _state)
@@ -80,14 +104,15 @@ public class GameManager : MonoBehaviour
     {
         DisplayBlock(_narrativeBlocks[currentBlock._choice1States]);
 
-        if (currentBlock._choice2States < 3)
+        switch (currentBlock._choice2States)
         {
-            _choice2Object.interactable = false;
-        }
+            case <3:
+                _choice2Object.interactable = false;
+                break;
 
-        if (currentBlock._choice2States >= 3)
-        {
-            _choice2Object.interactable = true;
+            case >=3:
+                _choice2Object.interactable = true;
+                break;
         }
     }
 
@@ -95,16 +120,18 @@ public class GameManager : MonoBehaviour
     {
         DisplayBlock(_narrativeBlocks[currentBlock._choice2States]);
 
-        if (currentBlock._choice2States < 3)
+        switch (currentBlock._choice2States)
         {
-            _choice2Object.interactable = false;
-        }
+            case < 3:
+                _choice2Object.interactable = false;
+                break;
 
-        if (currentBlock._choice2States >= 3)
-        {
-            _choice2Object.interactable = true;
+            case >= 3:
+                _choice2Object.interactable = true;
+                break;
         }
     }
+
 
     IEnumerator NarrativeWriter (string _mainNarrative)
     {
