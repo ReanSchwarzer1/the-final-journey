@@ -21,12 +21,15 @@ public class AsteroidEvent : Event
         spawnPosition = new Vector2(Camera.main.transform.position.x - (Camera.main.aspect * Camera.main.orthographicSize) - 8, 0);
     }
 
-    // Update is called once per frame
-    protected override void Update()
-    {
-        // Play the warning
-        base.Update();
+	protected override void FixedUpdate()
+	{
+		// Play the warning
+		base.FixedUpdate();
+	}
 
+	// Update is called once per frame
+	private void Update()
+    {
         // When the warning is done, spawn asteroids
         if (!isWarningPlaying)
         {

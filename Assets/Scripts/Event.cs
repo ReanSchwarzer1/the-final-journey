@@ -10,7 +10,7 @@ public class Event : MonoBehaviour
     protected bool isWarningPlaying = true;
 	private GameObject warning;
 	private Color warningColor;
-	private float percentDone = 0.001f;
+	private float percentDone = 0.025f;
 	private bool isFadingIn = true;
 	private int numTimesFaded = 0;
 
@@ -25,7 +25,7 @@ public class Event : MonoBehaviour
     }
 
     // Update is called once per frame
-    protected virtual void Update()
+    protected virtual void FixedUpdate()
     {
         // Run the warning only when needed
         if (isWarningPlaying)
@@ -40,7 +40,7 @@ public class Event : MonoBehaviour
 		// Lerp the alpha of the warning
 		warningColor.a = Mathf.Lerp(-0.25f, 1.25f, percentDone);
 		warning.GetComponent<SpriteRenderer>().color = warningColor;
-		percentDone += isFadingIn ? 0.001f : -0.001f;
+		percentDone += isFadingIn ? 0.025f : -0.025f;
 
         // Toggle between fading in and out
         if(percentDone <= 0f)
