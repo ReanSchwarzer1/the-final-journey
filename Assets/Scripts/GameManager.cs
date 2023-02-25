@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
     public Button _choice1Object;
     public Button _choice2Object;
 
+    private AudioSource audioSource;
+
 
     public float _narrationSpeed = 0.1f;
 
@@ -54,6 +56,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(NarrativeWriter(_narrativeBlocks[0]._narrativeText));
+
+        audioSource = this.gameObject.GetComponent<AudioSource>();
         DisplayBlock(_narrativeBlocks[0]);
 
         if (currentBlock._choice2States < 3) // for the first 3 states, we do not need a button 2
