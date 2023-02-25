@@ -160,8 +160,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14.7812, y: -174}
-  m_SizeDelta: {x: 824.1571, y: 30}
+  m_AnchoredPosition: {x: 14.782, y: -157.03}
+  m_SizeDelta: {x: 824.16, y: 89.937}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &232009145
 MonoBehaviour:
@@ -378,7 +378,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: -25.909576, z: 0, w: -23.80017}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -902,8 +902,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14.781, y: -217}
-  m_SizeDelta: {x: 824.16, y: 30}
+  m_AnchoredPosition: {x: 14.782, y: -312.47003}
+  m_SizeDelta: {x: 824.16, y: 85.0352}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1662716445
 MonoBehaviour:
@@ -1011,6 +1011,7 @@ GameObject:
   - component: {fileID: 1822347019}
   - component: {fileID: 1822347018}
   - component: {fileID: 1822347021}
+  - component: {fileID: 1822347022}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1099,7 +1100,7 @@ MonoBehaviour:
   _narrativeTextObject: {fileID: 1393111039}
   _choice1Object: {fileID: 232009145}
   _choice2Object: {fileID: 1662716445}
-  _narrationSpeed: 0.1
+  _narrationSpeed: 0.05
   _narrativeBlocks:
   - _narrativeText: Activating companion protocol...
     _choice1Text: Continue
@@ -1119,25 +1120,186 @@ MonoBehaviour:
     _choice2Text: 
     _choice2States: -1
     _button2EnableBool: 0
-  - _narrativeText: Hello Q, can you hear me?.
-    _choice1Text: Yes? Yes, but I cannot see you.
+  - _narrativeText: 
+    _choice1Text: Hello Q, can you hear me?.
     _choice1States: 4
     _choice2Text: Continue
     _choice2States: -1
-    _button2EnableBool: 1
-  - _narrativeText: "That\u2019s alright, can you tell me how you are feeling?"
-    _choice1Text: I feel a little strange, not quite here.
+    _button2EnableBool: 0
+  - _narrativeText: Yes? Yes, but I cannot see you.
+    _choice1Text: "That\u2019s alright, can you tell me how you are feeling?"
     _choice1States: 5
     _choice2Text: Continue
     _choice2States: -1
     _button2EnableBool: 1
-  - _narrativeText: 'I assure you, you are fine. You are currently in cryogenic sleep.
-      Here are your vitals:'
-    _choice1Text: I see, who are you?
-    _choice1States: -6
+  - _narrativeText: I feel a little strange, not quite here.
+    _choice1Text: I assure you, you are fine. You are currently in cryogenic sleep.
+      Here are your vitals.
+    _choice1States: 6
     _choice2Text: Continue
     _choice2States: -1
     _button2EnableBool: 1
+  - _narrativeText: I see, who are you?
+    _choice1Text: I am your companion, an artificial intelligence built on the Gargantua
+      framework. I am here to help you assess your situation and make decisions that
+      best suit you.
+    _choice1States: 7
+    _choice2Text: Continue
+    _choice2States: -1
+    _button2EnableBool: 1
+  - _narrativeText: Why am I in cryogenic sleep?
+    _choice1Text: What is the last thing you remember?
+    _choice1States: 8
+    _choice2Text: Continue
+    _choice2States: -1
+    _button2EnableBool: 1
+  - _narrativeText: "I was working\u2026 installing some fixes to the hangar\u2026"
+    _choice1Text: You were aboard the Solace.
+    _choice1States: 9
+    _choice2Text: Continue
+    _choice2States: -1
+    _button2EnableBool: 1
+  - _narrativeText: Oh God, I remember now. What happened to the Solace?!
+    _choice1Text: The Solace faced an engine crisis one week ago, you are currently
+      in an Escape Pod XM103. The ship has exploded
+    _choice1States: 10
+    _choice2Text: Continue
+    _choice2States: -1
+    _button2EnableBool: 1
+  - _narrativeText: "No\u2026 It can\u2019t be\u2026.How many escape pods were deployed?"
+    _choice1Text: Your memory will return momentarily, stay calm.
+    _choice1States: 11
+    _choice2Text: Continue
+    _choice2States: -1
+    _button2EnableBool: 1
+  - _narrativeText: How many?!
+    _choice1Text: Four hundred and twenty one were deployed before the explosion.
+      Pod XM103 was the only one to survive
+    _choice1States: 12
+    _choice2Text: The data is unclear, however this pod seems to be the only one
+      traveling in this trajectory.
+    _choice2States: 12
+    _button2EnableBool: 1
+  - _narrativeText: ........
+    _choice1Text: Do you have any other questions?
+    _choice1States: 13
+    _choice2Text: Continue
+    _choice2States: -1
+    _button2EnableBool: 1
+  - _narrativeText: "I don\u2019t know\u2026\u2026\u2026\u2026\u2026. Why is my heart
+      rate not changing?"
+    _choice1Text: "During InCryo communication your body functions are disconnected
+      from your brain\u2019s response framework, things you hear or say will not
+      affect your body as you are not really awake."
+    _choice1States: 14
+    _choice2Text: Continue
+    _choice2States: -1
+    _button2EnableBool: 1
+  - _narrativeText: "I don\u2019t know\u2026\u2026\u2026\u2026\u2026. Why is my heart
+      rate not changing?"
+    _choice1Text: "During InCryo communication your body functions are disconnected
+      from your brain\u2019s response framework, things you hear or say will not
+      affect your body as you are not really awake."
+    _choice1States: 15
+    _choice2Text: Continue
+    _choice2States: -1
+    _button2EnableBool: 1
+--- !u!82 &1822347022
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822347017}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 098fd717fe3b49943a434a6e8c99764e, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1903139312
 GameObject:
   m_ObjectHideFlags: 0

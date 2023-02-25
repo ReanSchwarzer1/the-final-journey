@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class StoryBlock 
@@ -36,6 +37,8 @@ public class GameManager : MonoBehaviour
     public Button _choice1Object;
     public Button _choice2Object;
 
+    private AudioSource audioSource;
+
 
     public float _narrationSpeed = 0.1f;
 
@@ -43,7 +46,7 @@ public class GameManager : MonoBehaviour
     new StoryBlock("Activating companion protocol...", "Continue", "", 1, -1, false), // tldr the bool at the end is for button 2 (whether it should be disabled or not)
     new StoryBlock("Life support at 89% capacity...", "Continue", "", 2, -1, false), // the numbers represent the new states the game should go to when the player clicks the button
     new StoryBlock("In-Cryo communication online...", "Continue", "", 3, -1, false), // for eg here, this is state 2 (from 0 to 1 to 2), and clicking button 1 would lead to the next state (state 3)
-    new StoryBlock("Hello Q, can you hear me?.", "Yes? Yes, but I cannot see you.","Continue", 4, -1, true), // in this case button 2 is enabled
+    new StoryBlock("Yes? Yes, but I cannot see you.","Hello Q, can you hear me?.","Continue", 4, -1, true), // in this case button 2 is enabled
     new StoryBlock("That’s alright, can you tell me how you are feeling?", "I feel a little strange, not quite here.", "Continue", 5, -1, true),
     new StoryBlock("I assure you, you are fine. You are currently in cryogenic sleep. Here are your vitals:", "I see, who are you?", "Continue", -6, -1, true),
     };
@@ -53,6 +56,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(NarrativeWriter(_narrativeBlocks[0]._narrativeText));
+
+        audioSource = this.gameObject.GetComponent<AudioSource>();
         DisplayBlock(_narrativeBlocks[0]);
 
         // for the first 3 states, we do not need a button 2
@@ -93,6 +98,8 @@ public class GameManager : MonoBehaviour
     void DisplayBlock(StoryBlock _state)
     {
         StopAllCoroutines();
+        if (_state._choice1States == 15)
+            SceneManager.LoadScene("John Scene");
         StartCoroutine(NarrativeWriter(_state._narrativeText));
        // _narrativeTextObject.text = _state._narrativeText;
         _choice1Object.GetComponentInChildren<TextMeshProUGUI>().text = _state._choice1Text;
@@ -100,10 +107,27 @@ public class GameManager : MonoBehaviour
         currentBlock = _state;
     }
 
+    /*
+       if (timer >= sentenceRate)
+       {
+           timer = 0;
+           if (NarrativeText[index] != '/')
+               textObject.GetComponent<TextMeshProUGUI>().text += NarrativeText[index];
+           else
+           {
+               textObject.GetComponent<TextMeshProUGUI>().text = "";
+               timer = -sentenceDelay;
+           }
+           index++;
+       }
+       timer += Time.deltaTime;
+    */
+
     public void Button1Clicked()
     {
         DisplayBlock(_narrativeBlocks[currentBlock._choice1States]);
 
+<<<<<<< HEAD
         switch (currentBlock._choice2States)
         {
             case <3:
@@ -111,6 +135,16 @@ public class GameManager : MonoBehaviour
                 break;
 
             case >=3:
+=======
+        // for the first 3 states, we do not need a button 2
+        switch (currentBlock._choice2States)
+        {
+            case < 3:
+                _choice2Object.interactable = false;
+                break;
+
+            case >= 3:
+>>>>>>> dev
                 _choice2Object.interactable = true;
                 break;
         }
@@ -120,6 +154,10 @@ public class GameManager : MonoBehaviour
     {
         DisplayBlock(_narrativeBlocks[currentBlock._choice2States]);
 
+<<<<<<< HEAD
+=======
+        // for the first 3 states, we do not need a button 2
+>>>>>>> dev
         switch (currentBlock._choice2States)
         {
             case < 3:
