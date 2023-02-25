@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class StoryBlock 
@@ -69,6 +70,8 @@ public class GameManager : MonoBehaviour
     void DisplayBlock(StoryBlock _state)
     {
         StopAllCoroutines();
+        if (_state._choice1States == 15)
+            SceneManager.LoadScene("John Scene");
         StartCoroutine(NarrativeWriter(_state._narrativeText));
        // _narrativeTextObject.text = _state._narrativeText;
         _choice1Object.GetComponentInChildren<TextMeshProUGUI>().text = _state._choice1Text;
