@@ -127,15 +127,6 @@ public class GameManager : MonoBehaviour
     {
         DisplayBlock(_narrativeBlocks[currentBlock._choice1States]);
 
-<<<<<<< HEAD
-        switch (currentBlock._choice2States)
-        {
-            case <3:
-                _choice2Object.interactable = false;
-                break;
-
-            case >=3:
-=======
         // for the first 3 states, we do not need a button 2
         switch (currentBlock._choice2States)
         {
@@ -144,7 +135,6 @@ public class GameManager : MonoBehaviour
                 break;
 
             case >= 3:
->>>>>>> dev
                 _choice2Object.interactable = true;
                 break;
         }
@@ -154,10 +144,8 @@ public class GameManager : MonoBehaviour
     {
         DisplayBlock(_narrativeBlocks[currentBlock._choice2States]);
 
-<<<<<<< HEAD
-=======
+
         // for the first 3 states, we do not need a button 2
->>>>>>> dev
         switch (currentBlock._choice2States)
         {
             case < 3:
