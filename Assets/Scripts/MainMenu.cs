@@ -6,6 +6,13 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
 
+    private AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = this.gameObject.GetComponent<AudioSource>();
+    }
+
     public void Play()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
