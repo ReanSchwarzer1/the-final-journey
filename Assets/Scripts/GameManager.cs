@@ -29,7 +29,7 @@ public class StoryBlock
     }
 }
 
-public class GameManager : MonoBehaviour 
+public class GameManager : MonoBehaviour
 {
     /*Reference: https://youtu.be/xmR07iBW7zk */
 
@@ -37,7 +37,14 @@ public class GameManager : MonoBehaviour
     public Button _choice1Object;
     public Button _choice2Object;
 
-    private AudioSource audioSource;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource audioSource2;
+
+    [SerializeField] private AudioClip _buttonSFX;
+
+    public float _BGSpeed;
+    private float offs;
+    [SerializeField] private Material _bgMat;
 
 
     public float _narrationSpeed = 0.1f;
@@ -58,6 +65,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(NarrativeWriter(_narrativeBlocks[0]._narrativeText));
 
         audioSource = this.gameObject.GetComponent<AudioSource>();
+
         DisplayBlock(_narrativeBlocks[0]);
 
         // for the first 3 states, we do not need a button 2
@@ -72,6 +80,20 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
+
+    public void ButtonSound()
+    {
+        audioSource2.clip = _buttonSFX;
+        audioSource2.Play();
+    }
+
+    public void BGLooper()
+    {
+        float timer = Time.deltaTime;
+        offs += (timer * _BGSpeed) / 10f;
+        _bgMat.SetTextureOffset("_MainTex", new Vector2(offs, 0));
+    }
+
 
     void DisplayBlock(StoryBlock _state)
     {
@@ -104,6 +126,7 @@ public class GameManager : MonoBehaviour
     public void Button1Clicked()
     {
         DisplayBlock(_narrativeBlocks[currentBlock._choice1States]);
+        ButtonSound();
 
         // for the first 3 states, we do not need a button 2
         switch (currentBlock._choice2States)
@@ -121,6 +144,7 @@ public class GameManager : MonoBehaviour
     public void Button2Clicked()
     {
         DisplayBlock(_narrativeBlocks[currentBlock._choice2States]);
+        ButtonSound();
 
         // for the first 3 states, we do not need a button 2
         switch (currentBlock._choice2States)
