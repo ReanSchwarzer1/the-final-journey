@@ -47,6 +47,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Material _bgMat;
 
 
+    [SerializeField] private Image _humanSprite;
+    [SerializeField] private Image _aiSprite;
+    public float _alphaOpacity = 1f;
+
     public float _narrationSpeed = 0.1f;
 
     public StoryBlock[] _narrativeBlocks = {
@@ -65,6 +69,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(NarrativeWriter(_narrativeBlocks[0]._narrativeText));
 
         audioSource = this.gameObject.GetComponent<AudioSource>();
+        
 
         DisplayBlock(_narrativeBlocks[0]);
 
@@ -94,20 +99,59 @@ public class GameManager : MonoBehaviour
         _bgMat.SetTextureOffset("_MainTex", new Vector2(offs, 0));
     }
 
-
     void DisplayBlock(StoryBlock _state)
     {
         StopAllCoroutines();
-        if (_state._choice1States == 15)
-            SceneManager.LoadScene("John Scene");
+        //SpriteAlphaChanger();
         StartCoroutine(NarrativeWriter(_state._narrativeText));
        // _narrativeTextObject.text = _state._narrativeText;
         _choice1Object.GetComponentInChildren<TextMeshProUGUI>().text = _state._choice1Text;
         _choice2Object.GetComponentInChildren<TextMeshProUGUI>().text = _state._choice2Text;
         currentBlock = _state;
+
+        switch (_state._choice1States)
+        {
+            case 1:
+                _humanSprite.GetComponent<Image>().color -= new Color(0f, 0f, 0f, _alphaOpacity);
+                _aiSprite.GetComponent<Image>().color -= new Color(0f, 0f, 0f, _alphaOpacity);
+                break;
+
+            case 2:
+                break;
+
+            case 3:
+                break;
+
+            case 4:
+                _aiSprite.GetComponent<Image>().color += new Color(0f, 0f, 0f, _alphaOpacity);
+                break;
+
+            case 5:
+                _humanSprite.GetComponent<Image>().color += new Color(0f, 0f, 0f, _alphaOpacity);
+                break;
+
+
+
+            case 15:
+                SceneManager.LoadScene("John Scene");
+                break;
+        }
+
+        switch (_state._choice2States)
+        {
+            case 1:
+                break;
+        }
+
     }
 
     /*
+    void SpriteAlphaChanger()
+    {
+
+    }
+
+    
        if (timer >= sentenceRate)
        {
            timer = 0;
@@ -168,7 +212,4 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(_narrationSpeed);
         }
     }
-
-
-
 }
