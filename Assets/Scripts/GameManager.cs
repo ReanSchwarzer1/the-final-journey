@@ -46,7 +46,6 @@ public class GameManager : MonoBehaviour
     private float offs;
     [SerializeField] private Material _bgMat;
 
-
     [SerializeField] private Image _humanSprite;
     [SerializeField] private Image _aiSprite;
     public float _alphaOpacity = 1f;
@@ -66,7 +65,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(NarrativeWriter(_narrativeBlocks[0]._narrativeText));
+        StartCoroutine(NarrativeWriter(_narrativeBlocks[0]));
 
         audioSource = this.gameObject.GetComponent<AudioSource>();
         
@@ -103,38 +102,22 @@ public class GameManager : MonoBehaviour
     {
         StopAllCoroutines();
         //SpriteAlphaChanger();
-        StartCoroutine(NarrativeWriter(_state._narrativeText));
+        StartCoroutine(NarrativeWriter(_state));
        // _narrativeTextObject.text = _state._narrativeText;
         _choice1Object.GetComponentInChildren<TextMeshProUGUI>().text = _state._choice1Text;
         _choice2Object.GetComponentInChildren<TextMeshProUGUI>().text = _state._choice2Text;
         currentBlock = _state;
 
+        
+
         switch (_state._choice1States)
         {
-            case 1:
-                _humanSprite.GetComponent<Image>().color -= new Color(0f, 0f, 0f, _alphaOpacity);
-                _aiSprite.GetComponent<Image>().color -= new Color(0f, 0f, 0f, _alphaOpacity);
-                break;
-
-            case 2:
-                break;
-
-            case 3:
-                break;
-
-            case 4:
-                _aiSprite.GetComponent<Image>().color += new Color(0f, 0f, 0f, _alphaOpacity);
-                break;
-
-            case 5:
-                _humanSprite.GetComponent<Image>().color += new Color(0f, 0f, 0f, _alphaOpacity);
-                break;
-
+            
 
 
             case 15:
                 SceneManager.LoadScene("John Scene");
-                break;
+                break;          
         }
 
         switch (_state._choice2States)
@@ -203,13 +186,35 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    IEnumerator NarrativeWriter (string _mainNarrative)
+    IEnumerator NarrativeWriter (StoryBlock block)
     {
         _narrativeTextObject.text = "";
+        string _mainNarrative = block._narrativeText;
+        Debug.Log("Choice 1 is " + block._choice1Text);
+        _choice1Object.gameObject.SetActive(false);
+        _choice2Object.gameObject.SetActive(false);
+
+        if (block._choice1Text == "Continue")
+        {
+            
+            
+            _aiSprite.GetComponent<Animator>().SetBool("Speaking", true);
+            _humanSprite.GetComponent<Animator>().SetBool("Speaking", false);
+        }
+        else
+        {
+            _aiSprite.GetComponent<Animator>().SetBool("Speaking", false);
+            _humanSprite.GetComponent<Animator>().SetBool("Speaking", true);
+        }
         foreach (char i in _mainNarrative.ToCharArray())
         {
+            
             _narrativeTextObject.text += i;
             yield return new WaitForSeconds(_narrationSpeed);
         }
+        _aiSprite.GetComponent<Animator>().SetBool("Speaking", true);
+        _humanSprite.GetComponent<Animator>().SetBool("Speaking", false);
+        _choice1Object.gameObject.SetActive(true);
+        _choice2Object.gameObject.SetActive(true);
     }
 }
