@@ -18,7 +18,7 @@ public class AsteroidEvent : Event
     {
         // Initialize things for the asteroids
         base.Start();
-        spawnPosition = new Vector2(Camera.main.transform.position.x - (Camera.main.aspect * Camera.main.orthographicSize) - 8, 0);
+        spawnPosition = new Vector2(Camera.main.transform.position.x + (Camera.main.aspect * Camera.main.orthographicSize) + 8, 0);
     }
 
 	protected override void FixedUpdate()
@@ -33,18 +33,22 @@ public class AsteroidEvent : Event
         // When the warning is done, spawn asteroids
         if (!isWarningPlaying)
         {
-            if (Input.GetKey(KeyCode.W))
-            {
-                player.GetComponent<Rigidbody2D>().velocity = Vector2.up * 3f;
-            }
-            else if(Input.GetKey(KeyCode.S))
-            {
-				player.GetComponent<Rigidbody2D>().velocity = Vector2.down * 3f;
-			}
-			else
-			{
-				player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-			}
+   //         if (Input.GetKey(KeyCode.W))
+   //         {
+   //             player.GetComponent<Rigidbody2D>().velocity = Vector2.up * 3f;
+   //         }
+   //         else if(Input.GetKey(KeyCode.S))
+   //         {
+			//	player.GetComponent<Rigidbody2D>().velocity = Vector2.down * 3f;
+			//}
+			//else
+			//{
+			//	player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+			//}
+
+			player.GetComponent<Rigidbody2D>().velocity = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - player.transform.position).normalized * 3f;
+			//player.transform.LookAt(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector3.forward);
+			player.transform.eulerAngles = new Vector3(0, 0, Mathf.Rad2Deg * Mathf.Atan2(-(Camera.main.ScreenToWorldPoint(Input.mousePosition) - player.transform.position).x, (Camera.main.ScreenToWorldPoint(Input.mousePosition) - player.transform.position).y));
 
 			if (!isSpawning)
 			{
@@ -56,7 +60,7 @@ public class AsteroidEvent : Event
 			}
 
 			// Destroy old asteroids
-			if (asteroids.Count > 0 && asteroids[0].transform.position.x > Camera.main.aspect * Camera.main.orthographicSize + 8)
+			if (asteroids.Count > 0 && asteroids[0].transform.position.x < -Camera.main.aspect * Camera.main.orthographicSize - 8)
 			{
 				GameObject oldAsteroid = asteroids[0];
 				asteroids.RemoveAt(0);
@@ -79,6 +83,9 @@ public class AsteroidEvent : Event
 
         spawnPosition.y = Random.Range(-Camera.main.orthographicSize, Camera.main.orthographicSize);
         asteroids.Add(Instantiate(asteroidPrefab, spawnPosition, Quaternion.identity));
+
+		asteroidSpeed.y = Mathf.Atan2(spawnPosition.y, spawnPosition.x) * asteroidSpeed.x;
+
         asteroids[asteroids.Count - 1].GetComponent<Rigidbody2D>().velocity = asteroidSpeed;
         numAsteroidsSpawned++;
 
