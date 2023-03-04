@@ -193,7 +193,7 @@ public class GameManager : MonoBehaviour
         _narrativeTextObject.text = "";
         string _mainNarrative = block._narrativeText;
         Debug.Log("Choice 1 is " + block._choice1Text);
-        _choice2Object.interactable = false;
+        _choice1Object.interactable = false;
         _choice2Object.interactable = false;
         if (!narrationCheck)
         {
