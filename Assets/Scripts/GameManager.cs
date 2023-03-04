@@ -52,6 +52,8 @@ public class GameManager : MonoBehaviour
 
     public float _narrationSpeed = 0.1f;
 
+    private bool narrationCheck = false;
+
     public StoryBlock[] _narrativeBlocks = {
     new StoryBlock("Activating companion protocol...", "Continue", "", 1, -1, false), // tldr the bool at the end is for button 2 (whether it should be disabled or not)
     new StoryBlock("Life support at 89% capacity...", "Continue", "", 2, -1, false), // the numbers represent the new states the game should go to when the player clicks the button
@@ -191,9 +193,14 @@ public class GameManager : MonoBehaviour
         _narrativeTextObject.text = "";
         string _mainNarrative = block._narrativeText;
         Debug.Log("Choice 1 is " + block._choice1Text);
-        _choice1Object.gameObject.SetActive(false);
-        _choice2Object.gameObject.SetActive(false);
-
+        _choice2Object.interactable = false;
+        _choice2Object.interactable = false;
+        if (!narrationCheck)
+        {
+            _choice1Object.transform.GetChild(0).gameObject.GetComponent<RectTransform>().localPosition += new Vector3(50000, 0, 0);
+            _choice2Object.transform.GetChild(0).gameObject.GetComponent<RectTransform>().localPosition += new Vector3(50000, 0, 0);
+        }
+            narrationCheck = true;
         if (block._choice1Text == "Continue")
         {
             
@@ -205,6 +212,15 @@ public class GameManager : MonoBehaviour
         {
             _aiSprite.GetComponent<Animator>().SetBool("Speaking", false);
             _humanSprite.GetComponent<Animator>().SetBool("Speaking", true);
+
+            if (block._choice2Text == "Continue")
+            {
+                _choice2Object.gameObject.SetActive(false);
+            }
+            else
+            {
+                _choice2Object.gameObject.SetActive(true);
+            }
         }
         foreach (char i in _mainNarrative.ToCharArray())
         {
@@ -214,7 +230,11 @@ public class GameManager : MonoBehaviour
         }
         _aiSprite.GetComponent<Animator>().SetBool("Speaking", true);
         _humanSprite.GetComponent<Animator>().SetBool("Speaking", false);
-        _choice1Object.gameObject.SetActive(true);
-        _choice2Object.gameObject.SetActive(true);
+        _choice1Object.interactable = true;
+        if(currentBlock._choice2States>=3)
+        _choice2Object.interactable = true;
+        _choice1Object.transform.GetChild(0).gameObject.GetComponent<RectTransform>().localPosition -= new Vector3(50000, 0, 0);
+        _choice2Object.transform.GetChild(0).gameObject.GetComponent<RectTransform>().localPosition -= new Vector3(50000, 0, 0);
+        narrationCheck = false;
     }
 }
