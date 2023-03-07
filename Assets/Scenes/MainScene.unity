@@ -862,7 +862,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ec59c72d6b60492479ffbc3ba265b346, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c21f1ba338f6d5747a7f929c940cf27d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1780,7 +1780,7 @@ MonoBehaviour:
   _alphaOpacity: 0.5
   _narrationSpeed: 0.05
   _narrativeBlocks:
-  - _narrativeText: Activating companion protocol...
+  - _narrativeText: Cryosleep failing...
     _choice1Text: Continue
     _choice1States: 1
     _choice2Text: 
@@ -1792,7 +1792,7 @@ MonoBehaviour:
     _choice2Text: 
     _choice2States: -1
     _button2EnableBool: 0
-  - _narrativeText: In-Cryo communication online...
+  - _narrativeText: Activating Companion protocol
     _choice1Text: Continue
     _choice1States: 3
     _choice2Text: 
@@ -1811,8 +1811,8 @@ MonoBehaviour:
     _choice2States: -1
     _button2EnableBool: 1
   - _narrativeText: I feel a little strange, not quite here.
-    _choice1Text: I assure you, you are fine. You are currently in cryogenic sleep.
-      Here are your vitals.
+    _choice1Text: I assure you, you are fine. You are currently recovering from cryogenic
+      sleep. Here are your vitals.
     _choice1States: 6
     _choice2Text: Continue
     _choice2States: -1
@@ -1825,7 +1825,7 @@ MonoBehaviour:
     _choice2Text: Continue
     _choice2States: -1
     _button2EnableBool: 1
-  - _narrativeText: Why am I in cryogenic sleep?
+  - _narrativeText: Why was I in cryogenic sleep?
     _choice1Text: What is the last thing you remember?
     _choice1States: 8
     _choice2Text: Continue
@@ -1864,11 +1864,8 @@ MonoBehaviour:
     _choice2Text: Continue
     _choice2States: -1
     _button2EnableBool: 1
-  - _narrativeText: "I don\u2019t know\u2026\u2026\u2026\u2026\u2026. Why is my heart
-      rate not changing?"
-    _choice1Text: "During InCryo communication your body functions are disconnected
-      from your brain\u2019s response framework, things you hear or say will not
-      affect your body as you are not really awake."
+  - _narrativeText: Are there no distress signals? Emergency communications?
+    _choice1Text: I'm afraid not, its all silent.
     _choice1States: 14
     _choice2Text: Continue
     _choice2States: -1
