@@ -20,7 +20,7 @@ public class Event : MonoBehaviour
         // Initialize things needed for a warning
         warning = Instantiate(warningPrefab);
         warningColor = warning.GetComponent<SpriteRenderer>().color;
-        GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
 
 		StartCoroutine(DisplayWarning());
     }

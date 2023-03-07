@@ -33,21 +33,7 @@ public class AsteroidEvent : Event
         // When the warning is done, spawn asteroids
         if (!isWarningPlaying)
         {
-   //         if (Input.GetKey(KeyCode.W))
-   //         {
-   //             player.GetComponent<Rigidbody2D>().velocity = Vector2.up * 3f;
-   //         }
-   //         else if(Input.GetKey(KeyCode.S))
-   //         {
-			//	player.GetComponent<Rigidbody2D>().velocity = Vector2.down * 3f;
-			//}
-			//else
-			//{
-			//	player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-			//}
-
 			player.GetComponent<Rigidbody2D>().velocity = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - player.transform.position).normalized * 10f;
-			//player.transform.LookAt(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector3.forward);
 			player.transform.eulerAngles = new Vector3(0, 0, Mathf.Rad2Deg * Mathf.Atan2(-(Camera.main.ScreenToWorldPoint(Input.mousePosition) - player.transform.position).x, (Camera.main.ScreenToWorldPoint(Input.mousePosition) - player.transform.position).y));
 
 			if (!isSpawning)
@@ -67,6 +53,7 @@ public class AsteroidEvent : Event
 				Destroy(oldAsteroid);
 				numAsteroidsDestroyed++;
 
+				// At this point the event is over. This part should bring the player back to the narrative
 				if (numAsteroidsDestroyed == 20)
 				{
 					player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
