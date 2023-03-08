@@ -66,14 +66,15 @@ public class AsteroidEvent : Event
     // Spawn an asteroid at a random location off-screen
     private IEnumerator SpawnAsteroid()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1f);
 
         spawnPosition.y = Random.Range(-Camera.main.orthographicSize, Camera.main.orthographicSize);
         asteroids.Add(Instantiate(asteroidPrefab, spawnPosition, Quaternion.identity));
 
-		asteroidSpeed.y = Mathf.Atan2(spawnPosition.y, spawnPosition.x) * asteroidSpeed.x;
+		asteroidSpeed = ((Vector2)player.transform.position - spawnPosition).normalized * (5f);
+		//asteroidSpeed.y = Mathf.Atan2(playerAsteroidDistance.x, playerAsteroidDistance.y) * asteroidSpeed.x;
 
-        asteroids[asteroids.Count - 1].GetComponent<Rigidbody2D>().velocity = asteroidSpeed;
+		asteroids[asteroids.Count - 1].GetComponent<Rigidbody2D>().velocity = asteroidSpeed;
         numAsteroidsSpawned++;
 
         isSpawning = false;
