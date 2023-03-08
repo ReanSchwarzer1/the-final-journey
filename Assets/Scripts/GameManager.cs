@@ -54,6 +54,8 @@ public class GameManager : MonoBehaviour
 
     private bool narrationCheck = false;
 
+    [SerializeField] private GameObject _pauseMenu;
+
     public StoryBlock[] _narrativeBlocks = {
     new StoryBlock("Activating companion protocol...", "Continue", "", 1, -1, false), // tldr the bool at the end is for button 2 (whether it should be disabled or not)
     new StoryBlock("Life support at 89% capacity...", "Continue", "", 2, -1, false), // the numbers represent the new states the game should go to when the player clicks the button
@@ -84,6 +86,21 @@ public class GameManager : MonoBehaviour
             case >= 3:
                 _choice2Object.interactable = true;
                 break;
+        }
+    }
+
+    private void Update()
+    {
+        GamePauser();
+    }
+
+    public void GamePauser()
+    {
+        // Reference to this pause code (603 game 2)
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            _pauseMenu.SetActive(!_pauseMenu.activeSelf);
+            Time.timeScale = (Time.timeScale > 0.0f ? 0.0f : 1.0f);
         }
     }
 
