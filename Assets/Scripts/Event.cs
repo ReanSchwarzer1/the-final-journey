@@ -6,7 +6,7 @@ public class Event : MonoBehaviour
 {
     // Fields used for displaying a warning message
     [SerializeField] private GameObject warningPrefab;
-    [SerializeField] protected GameObject player;
+    protected GameObject player;
     protected bool isWarningPlaying = true;
 	private GameObject warning;
 	private Color warningColor;
@@ -20,6 +20,7 @@ public class Event : MonoBehaviour
         // Initialize things needed for a warning
         warning = Instantiate(warningPrefab);
         warningColor = warning.GetComponent<SpriteRenderer>().color;
+        player = GameObject.FindGameObjectWithTag("Player");
 
 		StartCoroutine(DisplayWarning());
     }
