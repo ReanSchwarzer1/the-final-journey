@@ -602,7 +602,6 @@ MonoBehaviour:
   - {fileID: 1764674266}
   - {fileID: 499923814}
   - {fileID: 1069781517}
-  gameOver: {fileID: 0}
   maxHealth: 3
 --- !u!1 &1764674264
 GameObject:
