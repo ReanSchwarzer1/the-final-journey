@@ -2865,6 +2865,8 @@ MonoBehaviour:
   _alphaOpacity: 0.5
   _narrationSpeed: 0.05
   _pauseMenu: {fileID: 1573277954}
+  blackScreen: {fileID: 0}
+  endings: []
   _narrativeBlocks:
   - _narrativeText: That was close, what were those objects?
     _choice1Text: ' Those were parts of the debris from the Solace, propelled towards

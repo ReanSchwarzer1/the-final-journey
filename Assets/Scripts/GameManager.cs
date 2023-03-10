@@ -58,8 +58,11 @@ public class GameManager : MonoBehaviour
     private bool narrationCheck = false;
     private int trustState = 0;
     private bool hullDamaged = false;
+    private string endingText;
+    private GameObject hullDamage;
     [SerializeField] private GameObject _pauseMenu;
-
+    public GameObject blackScreen;
+    public GameObject[] endings;
     public StoryBlock[] _narrativeBlocks = {
     new StoryBlock("Activating companion protocol...", "Continue", "", 1, -1, false), // tldr the bool at the end is for button 2 (whether it should be disabled or not)
     new StoryBlock("Life support at 89% capacity...", "Continue", "", 2, -1, false), // the numbers represent the new states the game should go to when the player clicks the button
@@ -73,6 +76,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        hullDamage = GameObject.Find("DamageTracker");
         StartCoroutine(NarrativeWriter(_narrativeBlocks[0]));
 
         audioSource = this.gameObject.GetComponent<AudioSource>();
@@ -80,12 +84,19 @@ public class GameManager : MonoBehaviour
         if(devmode)
         { _narrationSpeed = 0; }
         if (actNumber == 2)
-        {if(!devmode)
+        {
             hullDamaged = GameObject.Find("DamageTracker").GetComponent<HullState>().IsDamaged();
             if (hullDamaged)
                 _narrativeBlocks[0]._choice1States = 2;
             else
                 _narrativeBlocks[0]._choice1States = 1;
+        }
+        else if(actNumber == 3)
+        {
+            if (hullDamage.GetComponent<HullState>().CheckTrust() > 2)
+                _narrativeBlocks[3]._choice1States = 4;
+            else
+                _narrativeBlocks[3]._choice1States = 6;
         }
         DisplayBlock(_narrativeBlocks[0]);
 
@@ -144,7 +155,7 @@ public class GameManager : MonoBehaviour
         if (actNumber == 1)
         {
             if (currentBlock == _narrativeBlocks[13])
-                trustState = 1;
+                hullDamage.GetComponent<HullState>().IncreaseTrust();
             switch (_state._choice1States)
             {
 
@@ -162,7 +173,7 @@ public class GameManager : MonoBehaviour
         else if(actNumber == 2)
         {
             if (currentBlock == _narrativeBlocks[3])
-                trustState = 1;
+                hullDamage.GetComponent<HullState>().IncreaseTrust();
             else if(currentBlock == _narrativeBlocks[4])
             {
                 //HULL REPAIR EVENT
@@ -178,6 +189,10 @@ public class GameManager : MonoBehaviour
                 case 9:
                     pingUI.SetActive(false);
                     break;
+                case 16:
+                    hullDamage.GetComponent<HullState>().IncreaseTrust();
+                    break;
+
                 case 24:
                     SceneManager.LoadScene("Mike Scene");
                     break;
@@ -186,6 +201,22 @@ public class GameManager : MonoBehaviour
         else
         {
 
+            switch (_state._choice1States)
+            {
+
+
+
+                
+                case 10:
+                    TriggerEnding(3);
+                    break;
+                case 18:
+                    TriggerEnding(1);
+                    break;
+                case 19:
+                    TriggerEnding(2);
+                    break;
+            }
         }
 
         switch (_state._choice2States)
@@ -279,14 +310,15 @@ public class GameManager : MonoBehaviour
             _aiSprite.GetComponent<Animator>().SetBool("Speaking", false);
             _humanSprite.GetComponent<Animator>().SetBool("Speaking", true);
 
-            if (block._choice2Text == "Continue")
-            {
-                _choice2Object.gameObject.SetActive(false);
-            }
-            else
-            {
-                _choice2Object.gameObject.SetActive(true);
-            }
+            
+        }
+        if (block._choice2Text == "Continue")
+        {
+            _choice2Object.gameObject.SetActive(false);
+        }
+        else
+        {
+            _choice2Object.gameObject.SetActive(true);
         }
         foreach (char i in _mainNarrative.ToCharArray())
         {
@@ -302,5 +334,23 @@ public class GameManager : MonoBehaviour
         _choice1Object.transform.GetChild(0).gameObject.GetComponent<RectTransform>().localPosition -= new Vector3(50000, 0, 0);
         _choice2Object.transform.GetChild(0).gameObject.GetComponent<RectTransform>().localPosition -= new Vector3(50000, 0, 0);
         narrationCheck = false;
+    }
+
+    public void TriggerEnding(int ending)
+    {
+        //SHOW DATA WITH A DELAY AFTER THIS
+        blackScreen.SetActive(true);
+        switch(ending)
+        {
+            case 1:
+                endings[0].SetActive(true);
+                break;
+            case 2:
+                endings[1].SetActive(true);
+                break;
+            case 3:
+                endings[2].SetActive(true);
+                break;
+        }
     }
 }

@@ -14,6 +14,7 @@ public class ShipHealth : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
+        damageTracker = GameObject.Find("DamageTracker");
     }
 
     // Update is called once per frame
@@ -25,7 +26,7 @@ public class ShipHealth : MonoBehaviour
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
         currentHealth--;
-        damageTracker.GetComponent<HullState>().setDamage();
+        damageTracker.GetComponent<HullState>().SetDamage();
         if (currentHealth >= 0) healthUI[currentHealth].gameObject.SetActive(false);
 
         if(currentHealth <= 0)
