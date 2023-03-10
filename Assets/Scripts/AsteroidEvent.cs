@@ -19,8 +19,10 @@ public class AsteroidEvent : Event
 	private float percentChanged = 0.05f;
 	private bool isFading = false;
 
-    // Start is called before the first frame update
-    protected override void Start()
+	[SerializeField] private GameObject _pauseMenu;
+
+	// Start is called before the first frame update
+	protected override void Start()
     {
         // Initialize things for the asteroids
         base.Start();
@@ -83,6 +85,13 @@ public class AsteroidEvent : Event
                     SceneManager.LoadScene("MainScene Act 2");
 				}
 			}
+		}
+
+		// Reference to this pause code (603 game 2)
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			_pauseMenu.SetActive(!_pauseMenu.activeSelf);
+			Time.timeScale = (Time.timeScale > 0.0f ? 0.0f : 1.0f);
 		}
 	}
 

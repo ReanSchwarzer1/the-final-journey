@@ -6,6 +6,8 @@ using static UnityEditor.Progress;
 
 public class RadioEvent : MonoBehaviour
 {
+
+    [SerializeField] private GameObject _pauseMenu;
     // All the different game objects in the dictionary
     [SerializeField] GameObject baseOutline;
     [SerializeField] GameObject baseGO;
@@ -64,6 +66,13 @@ public class RadioEvent : MonoBehaviour
         if (count == 4)
         {
             SceneManager.LoadScene("MainScene Act 3");
+        }
+
+        // Reference to this pause code (603 game 2)
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            _pauseMenu.SetActive(!_pauseMenu.activeSelf);
+            Time.timeScale = (Time.timeScale > 0.0f ? 0.0f : 1.0f);
         }
     }
 }
