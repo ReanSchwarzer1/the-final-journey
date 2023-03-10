@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AsteroidEvent : Event
 {
@@ -79,6 +80,7 @@ public class AsteroidEvent : Event
 				{
 					player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 					Destroy(gameObject);
+                    SceneManager.LoadScene("MainScene Act 2");
 				}
 			}
 		}

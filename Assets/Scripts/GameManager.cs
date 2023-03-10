@@ -36,7 +36,10 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI _narrativeTextObject;
     public Button _choice1Object;
     public Button _choice2Object;
-
+    public int actNumber;
+    public GameObject warningUI;
+    public GameObject pingUI;
+    public bool devmode;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioSource audioSource2;
 
@@ -53,7 +56,8 @@ public class GameManager : MonoBehaviour
     public float _narrationSpeed = 0.1f;
 
     private bool narrationCheck = false;
-
+    private int trustState = 0;
+    private bool hullDamaged = false;
     [SerializeField] private GameObject _pauseMenu;
 
     public StoryBlock[] _narrativeBlocks = {
@@ -72,8 +76,17 @@ public class GameManager : MonoBehaviour
         StartCoroutine(NarrativeWriter(_narrativeBlocks[0]));
 
         audioSource = this.gameObject.GetComponent<AudioSource>();
-        
 
+        if(devmode)
+        { _narrationSpeed = 0; }
+        if (actNumber == 2)
+        {if(!devmode)
+            hullDamaged = GameObject.Find("DamageTracker").GetComponent<HullState>().IsDamaged();
+            if (hullDamaged)
+                _narrativeBlocks[0]._choice1States = 2;
+            else
+                _narrativeBlocks[0]._choice1States = 1;
+        }
         DisplayBlock(_narrativeBlocks[0]);
 
         // for the first 3 states, we do not need a button 2
@@ -127,16 +140,52 @@ public class GameManager : MonoBehaviour
         _choice2Object.GetComponentInChildren<TextMeshProUGUI>().text = _state._choice2Text;
         currentBlock = _state;
 
-        
 
-        switch (_state._choice1States)
+        if (actNumber == 1)
         {
-            
+            if (currentBlock == _narrativeBlocks[13])
+                trustState = 1;
+            switch (_state._choice1States)
+            {
+
+                
+
+                case 16:
+                    warningUI.SetActive(true);
+                    break;
+                case 17:
+                    warningUI.SetActive(false);
+                    SceneManager.LoadScene("John Scene");
+                    break;
+            }
+        }
+        else if(actNumber == 2)
+        {
+            if (currentBlock == _narrativeBlocks[3])
+                trustState = 1;
+            else if(currentBlock == _narrativeBlocks[4])
+            {
+                //HULL REPAIR EVENT
+            }
+            switch (_state._choice1States)
+            {
 
 
-            case 15:
-                SceneManager.LoadScene("John Scene");
-                break;          
+
+                case 8:
+                    pingUI.SetActive(true);
+                    break;
+                case 9:
+                    pingUI.SetActive(false);
+                    break;
+                case 24:
+                    SceneManager.LoadScene("Mike Scene");
+                    break;
+            }
+        }
+        else
+        {
+
         }
 
         switch (_state._choice2States)

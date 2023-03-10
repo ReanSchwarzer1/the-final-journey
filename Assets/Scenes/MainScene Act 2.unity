@@ -1768,7 +1768,7 @@ RectTransform:
   m_GameObject: {fileID: 1122443816}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.8061438, y: 1.175, z: 1}
+  m_LocalScale: {x: 2.07, y: 1.72, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1393111038}
@@ -2307,7 +2307,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -28.236053, y: 27.415176, z: 39.216705, w: 32.942062}
+  m_margin: {x: -28.236053, y: 24.277847, z: 42.354004, w: 32.942062}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2851,7 +2851,7 @@ MonoBehaviour:
   _narrativeTextObject: {fileID: 1393111039}
   _choice1Object: {fileID: 232009145}
   _choice2Object: {fileID: 1662716445}
-  actNumber: 1
+  actNumber: 2
   warningUI: {fileID: 624400754}
   pingUI: {fileID: 243917473}
   devmode: 1
@@ -2866,123 +2866,174 @@ MonoBehaviour:
   _narrationSpeed: 0.05
   _pauseMenu: {fileID: 1573277954}
   _narrativeBlocks:
-  - _narrativeText: Cryosleep failing...
-    _choice1Text: Continue
+  - _narrativeText: That was close, what were those objects?
+    _choice1Text: ' Those were parts of the debris from the Solace, propelled towards
+      us by the explosion. The shockwave was what caused cryosleep to fail. '
     _choice1States: 1
-    _choice2Text: 
+    _choice2Text: Continue
     _choice2States: -1
     _button2EnableBool: 0
-  - _narrativeText: Life support at 89% capacity...
+  - _narrativeText: ' I see, that makes sense. '
     _choice1Text: Continue
-    _choice1States: 2
-    _choice2Text: 
-    _choice2States: -1
-    _button2EnableBool: 0
-  - _narrativeText: Activating Companion protocol
-    _choice1Text: Continue
-    _choice1States: 3
-    _choice2Text: 
-    _choice2States: -1
-    _button2EnableBool: 0
-  - _narrativeText: 
-    _choice1Text: Hello Q, can you hear me?.
-    _choice1States: 4
-    _choice2Text: Continue
-    _choice2States: -1
-    _button2EnableBool: 0
-  - _narrativeText: Yes? Yes, but I cannot see you.
-    _choice1Text: "That\u2019s alright, can you tell me how you are feeling?"
-    _choice1States: 5
-    _choice2Text: Continue
-    _choice2States: -1
-    _button2EnableBool: 1
-  - _narrativeText: I feel a little strange, not quite here.
-    _choice1Text: I assure you, you are fine. You are currently recovering from cryogenic
-      sleep. Here are your vitals.
-    _choice1States: 6
-    _choice2Text: Continue
-    _choice2States: -1
-    _button2EnableBool: 1
-  - _narrativeText: I see, who are you?
-    _choice1Text: I am your companion, an artificial intelligence built on the Gargantua
-      framework. I am here to help you assess your situation and make decisions that
-      best suit you.
     _choice1States: 7
     _choice2Text: Continue
     _choice2States: -1
-    _button2EnableBool: 1
-  - _narrativeText: Why was I in cryogenic sleep?
-    _choice1Text: What is the last thing you remember?
+    _button2EnableBool: 0
+  - _narrativeText: ' If the hull is damaged I could probably patch it up a bit,
+      is there a repair kit stowed in the pod?'
+    _choice1Text: 'There is a repair kit present in the locker under the HUD panel. '
+    _choice1States: 3
+    _choice2Text: ' In your current state I would recommend avoiding such a task.
+      Any error could cause a hull breach. '
+    _choice2States: 6
+    _button2EnableBool: 0
+  - _narrativeText: "Alright let me just see what I can do\u2026"
+    _choice1Text: Continue
+    _choice1States: 4
+    _choice2Text: 
+    _choice2States: -1
+    _button2EnableBool: 0
+  - _narrativeText: There we go.
+    _choice1Text: 'Well done! That was impressive! '
+    _choice1States: 5
+    _choice2Text: Continue
+    _choice2States: -1
+    _button2EnableBool: 0
+  - _narrativeText: 'Thank you. I did a lot of repair work on the Solace when I was
+      on it. '
+    _choice1Text: Continue
+    _choice1States: 7
+    _choice2Text: Continue
+    _choice2States: -1
+    _button2EnableBool: 0
+  - _narrativeText: 'Oh, right. As long as it holds I should leave it alone. '
+    _choice1Text: The hull has just enough strength to survive atmospheric entry,
+      any further damage could leave you stranded.
+    _choice1States: 7
+    _choice2Text: Continue
+    _choice2States: -1
+    _button2EnableBool: 0
+  - _narrativeText: Is that a signal?
+    _choice1Text: 'The scanners have picked up more information about the habitable
+      planets. '
     _choice1States: 8
     _choice2Text: Continue
     _choice2States: -1
-    _button2EnableBool: 1
-  - _narrativeText: "I was working\u2026 installing some fixes to the hangar\u2026"
-    _choice1Text: You were aboard the Solace.
+    _button2EnableBool: 0
+  - _narrativeText: How many are there?
+    _choice1Text: 'Two. Both of them are close to each other and are orbiting their
+      star at similar distances. Would you like me to describe them? '
     _choice1States: 9
     _choice2Text: Continue
     _choice2States: -1
-    _button2EnableBool: 1
-  - _narrativeText: Oh God, I remember now. What happened to the Solace?!
-    _choice1Text: The Solace faced an engine crisis one week ago, you are currently
-      in an Escape Pod XM103. The ship has exploded
+    _button2EnableBool: 0
+  - _narrativeText: Go ahead.
+    _choice1Text: ' Planet A is primarily covered in oceans. It''s landscape shows
+      no sign of regular rain or major erosion, indicating a stagnant climate '
     _choice1States: 10
     _choice2Text: Continue
     _choice2States: -1
-    _button2EnableBool: 1
-  - _narrativeText: "No\u2026 It can\u2019t be\u2026.How many escape pods were deployed?"
-    _choice1Text: Your memory will return momentarily, stay calm.
+    _button2EnableBool: 0
+  - _narrativeText: 'And the other? '
+    _choice1Text: 'Planet B is closer to the sun and has landmass clumped closer
+      to the equator. The climate is warm and similar to tropical regions on Earth. '
     _choice1States: 11
     _choice2Text: Continue
     _choice2States: -1
-    _button2EnableBool: 1
-  - _narrativeText: How many?!
-    _choice1Text: Four hundred and twenty one were deployed before the explosion.
-      Pod XM103 was the only one to survive
+    _button2EnableBool: 0
+  - _narrativeText: ' So which one seems optimal? '
+    _choice1Text: ' Planet A does not have any naturally existing ecosystem. Planet
+      B is rich in life, but the oxygen concentration indicates there could be massive
+      lifeforms that could possibly be predatory. '
     _choice1States: 12
-    _choice2Text: The data is unclear, however this pod seems to be the only one
-      traveling in this trajectory.
-    _choice2States: 13
-    _button2EnableBool: 1
-  - _narrativeText: "I can\u2019t believe it. They\u2019re all dead\u2026"
-    _choice1Text: That is the likely case. Do you have any other questions?
+    _choice2Text: Continue
+    _choice2States: -1
+    _button2EnableBool: 0
+  - _narrativeText: ' So not planet B then.'
+    _choice1Text: Take a moment to think about this decision, the planters present
+      on this pod will be enough to incubate plants for sustenance, apart from those
+      you will be the sole living creature on planet A.
+    _choice1States: 13
+    _choice2Text: Continue
+    _choice2States: -1
+    _button2EnableBool: 0
+  - _narrativeText: " Oh\u2026I guess I didn't think about that. Or I didn't want
+      to. Are there any protocol guidelines on what I should do? "
+    _choice1Text: ' I''m sorry, the Phoenix Module was destroyed with the Solace.
+      You are likely to be the last human in the universe. '
     _choice1States: 14
     _choice2Text: Continue
     _choice2States: -1
-    _button2EnableBool: 1
-  - _narrativeText: Are there other escape pod signals?
-    _choice1Text: No, not currently. Do you have any other questions?
-    _choice1States: 14
-    _choice2Text: Continue
-    _choice2States: -1
-    _button2EnableBool: 1
-  - _narrativeText: Where are we headed?
-    _choice1Text: A nearby system has shown positive readings for habitable planets.
-      As we approach we shall be able to discover more about them.
-    _choice1States: 15
-    _choice2Text: Continue
-    _choice2States: -1
-    _button2EnableBool: 1
-  - _narrativeText: What now?!
-    _choice1Text: Multiple foreign objects have been detected on a collision path.
-      I shall temporarily be switching to propellant control.
+    _button2EnableBool: 0
+  - _narrativeText: " ...What will I even do. I can\u2019t imagine living without
+      them. "
+    _choice1Text: ' You are maintaining your composure well for someone in your situation. '
+    _choice1States: 19
+    _choice2Text: ' Your loved ones. Can you tell me about them? '
+    _choice2States: 15
+    _button2EnableBool: 0
+  - _narrativeText: ' Why would you ask me that? |His eyes well up a little| '
+    _choice1Text: ' Tell me. '
     _choice1States: 16
     _choice2Text: Continue
     _choice2States: -1
-    _button2EnableBool: 1
-  - _narrativeText: ...
-    _choice1Text: ...
+    _button2EnableBool: 0
+  - _narrativeText: "Okay I guess\u2026 uh.. There\u2019s my folks. I never got along
+      with them, but they did their best."
+    _choice1Text: ' What about your friends?'
     _choice1States: 17
     _choice2Text: Continue
     _choice2States: -1
-    _button2EnableBool: 1
-  - _narrativeText: What now?!
-    _choice1Text: Multiple foreign objects have been detected on a collision path.
-      I shall temporarily be switching to propellant control.
-    _choice1States: 17
+    _button2EnableBool: 0
+  - _narrativeText: ' My friends and I would go bowling every weekend on the Solace.
+      We never got that kind of time on Earth. We were all equally bad. |He laughs
+      as tears begin to stream down his face.|'
+    _choice1Text: ' Anyone else? '
+    _choice1States: 18
     _choice2Text: Continue
     _choice2States: -1
-    _button2EnableBool: 1
+    _button2EnableBool: 0
+  - _narrativeText: ' W was my rock. When she held me, everything that was happening
+      would melt away. *He begins to sob* '
+    _choice1Text: ' W was my rock. When she held me, everything that was happening
+      would melt away. He begins to sob. '
+    _choice1States: 20
+    _choice2Text: Continue
+    _choice2States: -1
+    _button2EnableBool: 0
+  - _narrativeText: "Its all too much, I don\u2019t think my body has the capacity
+      to let me break down. His somber expression breaks into one of clear distress.  "
+    _choice1Text: ' I understand. '
+    _choice1States: 20
+    _choice2Text: Continue
+    _choice2States: -1
+    _button2EnableBool: 0
+  - _narrativeText: ' He takes some time to compose himself. Why do you behave like
+      that. Are you mannerisms and way of speaking pre-built? '
+    _choice1Text: ' I am designed to mimic behaviours that make you comfortable. '
+    _choice1States: 21
+    _choice2Text: 'Its just me. I may not be human, but I make my own choices. '
+    _choice2States: 21
+    _button2EnableBool: 0
+  - _narrativeText: " I understand\u2026 Are there still no pod signals? "
+    _choice1Text: 'It seems the scanner had its components disconnect during our
+      evasive procedures. Would you like me to guide you with fixing it?  '
+    _choice1States: 22
+    _choice2Text: Continue
+    _choice2States: -1
+    _button2EnableBool: 0
+  - _narrativeText: ' Of course. Tell me what to do. '
+    _choice1Text: Continue
+    _choice1States: 23
+    _choice2Text: Continue
+    _choice2States: -1
+    _button2EnableBool: 0
+  - _narrativeText: ' Of course. Tell me what to do. '
+    _choice1Text: Continue
+    _choice1States: 24
+    _choice2Text: Continue
+    _choice2States: -1
+    _button2EnableBool: 0
 --- !u!82 &1822347022
 AudioSource:
   m_ObjectHideFlags: 0

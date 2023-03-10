@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static UnityEditor.Progress;
 
 public class RadioEvent : MonoBehaviour
@@ -62,7 +63,7 @@ public class RadioEvent : MonoBehaviour
 
         if (count == 4)
         {
-            // Advance to the next part of the narrative
+            SceneManager.LoadScene("MainScene Act 3");
         }
     }
 }

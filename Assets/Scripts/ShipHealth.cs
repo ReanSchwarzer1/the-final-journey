@@ -9,7 +9,7 @@ public class ShipHealth : MonoBehaviour
     [SerializeField] private Image[] healthUI;
     [SerializeField] private int maxHealth;
     private int currentHealth;
-
+    public GameObject damageTracker;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +25,7 @@ public class ShipHealth : MonoBehaviour
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
         currentHealth--;
-
+        damageTracker.GetComponent<HullState>().setDamage();
         if (currentHealth >= 0) healthUI[currentHealth].gameObject.SetActive(false);
 
         if(currentHealth <= 0)
