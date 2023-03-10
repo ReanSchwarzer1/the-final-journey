@@ -12,6 +12,8 @@ public class RadioEvent : MonoBehaviour
     [SerializeField] GameObject antennaGO;
     [SerializeField] GameObject batteryOutline;
     [SerializeField] GameObject batteryGO;
+    [SerializeField] GameObject knobOutline;
+    [SerializeField] GameObject knobGO;
 
     /// <summary>
     /// Dictionary that holds the objects being compared and if they've been aligned
@@ -29,7 +31,8 @@ public class RadioEvent : MonoBehaviour
         {
             { batteryGO, (batteryOutline, false) },
             { baseGO, (baseOutline, false) },
-            { antennaGO, (antennaOutline, false) }
+            { antennaGO, (antennaOutline, false) },
+            { knobGO, (knobOutline, false) }
         };
     }
 
@@ -57,7 +60,7 @@ public class RadioEvent : MonoBehaviour
             }
         }
 
-        if (count == 3)
+        if (count == 4)
         {
             // Advance to the next part of the narrative
         }
