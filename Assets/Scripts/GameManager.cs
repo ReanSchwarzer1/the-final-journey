@@ -74,8 +74,11 @@ public class GameManager : MonoBehaviour
 
     StoryBlock currentBlock;
 
+    [SerializeField] private InGameTracker choiceTracker;
+
     void Start()
     {
+        choiceTracker = GameObject.Find("ChoiceTracker").GetComponent<InGameTracker>();
         hullDamage = GameObject.Find("DamageTracker");
         StartCoroutine(NarrativeWriter(_narrativeBlocks[0]));
 
@@ -251,6 +254,11 @@ public class GameManager : MonoBehaviour
 
     public void Button1Clicked()
     {
+        if (currentBlock._choice2States != -1)
+        {
+            choiceTracker.PlayerChoices.Add(currentBlock._choice1Text);
+        }
+
         DisplayBlock(_narrativeBlocks[currentBlock._choice1States]);
         ButtonSound();
 
@@ -269,6 +277,11 @@ public class GameManager : MonoBehaviour
 
     public void Button2Clicked()
     {
+        if (currentBlock._choice2States != -1)
+        {
+            choiceTracker.PlayerChoices.Add(currentBlock._choice2Text);
+        }
+
         DisplayBlock(_narrativeBlocks[currentBlock._choice2States]);
         ButtonSound();
 

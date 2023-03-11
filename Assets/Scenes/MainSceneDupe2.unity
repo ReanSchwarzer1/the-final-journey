@@ -1298,8 +1298,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6ad26bce248ec54ca08284da677a718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  choice1: {fileID: 0}
-  choice2: {fileID: 0}
 --- !u!4 &704481023
 Transform:
   m_ObjectHideFlags: 0
@@ -2921,6 +2919,10 @@ MonoBehaviour:
   _narrativeTextObject: {fileID: 1393111039}
   _choice1Object: {fileID: 232009145}
   _choice2Object: {fileID: 1662716445}
+  actNumber: 0
+  warningUI: {fileID: 0}
+  pingUI: {fileID: 0}
+  devmode: 0
   audioSource: {fileID: 1822347022}
   audioSource2: {fileID: 232009148}
   _buttonSFX: {fileID: 8300000, guid: f103335f5a8d7a04994fd177b757f076, type: 3}
@@ -2931,6 +2933,8 @@ MonoBehaviour:
   _alphaOpacity: 0.5
   _narrationSpeed: 0.05
   _pauseMenu: {fileID: 1573277954}
+  blackScreen: {fileID: 0}
+  endings: []
   _narrativeBlocks:
   - _narrativeText: Cryosleep failing...
     _choice1Text: Continue
@@ -3031,6 +3035,7 @@ MonoBehaviour:
     _choice2Text: Continue
     _choice2States: -1
     _button2EnableBool: 1
+  choiceTracker: {fileID: 0}
 --- !u!82 &1822347022
 AudioSource:
   m_ObjectHideFlags: 0
