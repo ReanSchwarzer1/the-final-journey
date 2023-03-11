@@ -216,7 +216,7 @@ public class GameManager : MonoBehaviour
 
 
                 
-                case 10:
+                case 500:
                     TriggerEnding(3);
                     break;
                 case 18:

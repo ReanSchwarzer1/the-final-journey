@@ -3072,7 +3072,7 @@ MonoBehaviour:
   actNumber: 3
   warningUI: {fileID: 624400754}
   pingUI: {fileID: 243917473}
-  devmode: 0
+  devmode: 1
   audioSource: {fileID: 1822347022}
   audioSource2: {fileID: 232009148}
   _buttonSFX: {fileID: 8300000, guid: f103335f5a8d7a04994fd177b757f076, type: 3}
@@ -3154,14 +3154,14 @@ MonoBehaviour:
   - _narrativeText: '|Q gets up and walks briskly to the control panel|  Its been
       a while, but I think I can manage this on my own. '
     _choice1Text: Dont do this!
-    _choice1States: 10
+    _choice1States: 500
     _choice2Text: Continue
     _choice2States: -1
     _button2EnableBool: 0
   - _narrativeText: '|Q gets up and walks briskly to the control panel|  Its been
       a while, but I think I can manage this on my own. '
     _choice1Text: Dont do this!
-    _choice1States: 10
+    _choice1States: 500
     _choice2Text: ' You are currently panicking, take a moment to calm down. You
       need to trust my calculations. '
     _choice2States: -1
