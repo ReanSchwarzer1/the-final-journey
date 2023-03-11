@@ -25,7 +25,7 @@ public class DataTracking : MonoBehaviour
     public IEnumerator LoadData(int ending)
     {
         yield return new WaitForSeconds(3f);
-        UnityWebRequest request = UnityWebRequest.Get("https://firebasestorage.googleapis.com/v0/b/the-final-journey-41772.appspot.com/o/SaveData01.dat?alt=media&token=2f978712-84dd-4cfa-8c1a-b23c06882762");
+        UnityWebRequest request = UnityWebRequest.Get("https://firebasestorage.googleapis.com/v0/b/the-final-journey-41772.appspot.com/o/SaveData01.dat?alt=media&token=43294cb2-796a-47c9-b104-371c285949c3");
         yield return request.SendWebRequest();
 
         if(request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
@@ -51,7 +51,7 @@ public class DataTracking : MonoBehaviour
 
     public IEnumerator SaveData(string postData)
     {
-		UnityWebRequest request = UnityWebRequest.Post("https://firebasestorage.googleapis.com/v0/b/the-final-journey-41772.appspot.com/o/SaveData01.dat?alt=media&token=2f978712-84dd-4cfa-8c1a-b23c06882762", postData);
+		UnityWebRequest request = UnityWebRequest.Post("https://firebasestorage.googleapis.com/v0/b/the-final-journey-41772.appspot.com/o/SaveData01.dat?alt=media&token=43294cb2-796a-47c9-b104-371c285949c3", postData);
 		yield return request.SendWebRequest();
 
 		if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
