@@ -7,7 +7,8 @@ using UnityEngine.Networking;
 
 public class DataTracking : MonoBehaviour
 {
-    private string data;
+    public string data;
+    [SerializeField] private GameObject gameManager;
 
 	// Start is called before the first frame update
 	void Start()
@@ -21,30 +22,36 @@ public class DataTracking : MonoBehaviour
 
     }
 
-    public void CallSaveData(GameObject choice)
+    public IEnumerator LoadData(int ending)
     {
-        StartCoroutine(SaveData("https://firebasestorage.googleapis.com/v0/b/the-final-journey-41772.appspot.com/o/SaveData01.dat?alt=media&token=71c4fb2f-922d-4326-84fe-37b59af25926", choice.GetComponent<TMP_Text>().text));
-    }
-
-    private IEnumerator LoadData(string url)
-    {
-        UnityWebRequest request = UnityWebRequest.Get(url);
+        yield return new WaitForSeconds(3f);
+        UnityWebRequest request = UnityWebRequest.Get("https://firebasestorage.googleapis.com/v0/b/the-final-journey-41772.appspot.com/o/SaveData01.dat?alt=media&token=2f978712-84dd-4cfa-8c1a-b23c06882762");
         yield return request.SendWebRequest();
 
         if(request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
         {
             Debug.Log(request.error);
+            data = "0,0,0";
         }
         else
         {
-            data = request.downloadHandler.text;
-            Debug.Log(data);
-        }
+            data = "";
+            string[] dataString = request.downloadHandler.text.Split("%2c");
+            for(int i = 0; i < dataString.Length; i++)
+            {
+                data += dataString[i] + ",";
+            }
+
+            data = data.Substring(0, data.Length - 1);
+			Debug.Log(data);
+		}
+
+        gameManager.GetComponent<GameManager>().UpdateUIAndData(ending);
     }
 
-    private IEnumerator SaveData(string url, string postData)
+    public IEnumerator SaveData(string postData)
     {
-		UnityWebRequest request = UnityWebRequest.Post(url, postData);
+		UnityWebRequest request = UnityWebRequest.Post("https://firebasestorage.googleapis.com/v0/b/the-final-journey-41772.appspot.com/o/SaveData01.dat?alt=media&token=2f978712-84dd-4cfa-8c1a-b23c06882762", postData);
 		yield return request.SendWebRequest();
 
 		if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
@@ -54,7 +61,6 @@ public class DataTracking : MonoBehaviour
 		else
 		{
 			Debug.Log("Success!");
-            StartCoroutine(LoadData(url));
 		}
 	}
 }
