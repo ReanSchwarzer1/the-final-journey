@@ -2867,6 +2867,9 @@ MonoBehaviour:
   _pauseMenu: {fileID: 1573277954}
   blackScreen: {fileID: 0}
   endingDataText: {fileID: 0}
+  choiceDataText: {fileID: 0}
+  choiceButton: {fileID: 0}
+  loreText: {fileID: 0}
   endings: []
   _narrativeBlocks:
   - _narrativeText: That was close, what were those objects?

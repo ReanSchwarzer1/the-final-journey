@@ -61,8 +61,13 @@ public class GameManager : MonoBehaviour
     private string endingText;
     private GameObject hullDamage;
     [SerializeField] private GameObject _pauseMenu;
+
     public GameObject blackScreen;
     public GameObject endingDataText;
+    public GameObject choiceDataText;
+    public GameObject choiceButton;
+    public GameObject loreText;
+
     public GameObject[] endings;
     public StoryBlock[] _narrativeBlocks = {
     new StoryBlock("Activating companion protocol...", "Continue", "", 1, -1, false), // tldr the bool at the end is for button 2 (whether it should be disabled or not)
@@ -373,33 +378,41 @@ public class GameManager : MonoBehaviour
 
     public void UpdateUIAndData(int ending)
     {
-		DataTracking dataTracking = gameObject.GetComponent<DataTracking>();
+        DataTracking dataTracking = gameObject.GetComponent<DataTracking>();
 
-		// Parse data
-		string[] dataString = dataTracking.data.Split(',');
-		int[] data = new int[dataString.Length];
-		float totalPlays = 0f;
-		for (int i = 0; i < dataString.Length; i++)
-		{
-			data[i] = int.Parse(dataString[i]);
-			totalPlays += data[i];
-		}
+        // Parse data
+        string[] dataString = dataTracking.data.Split(',');
+        int[] data = new int[dataString.Length];
+        float totalPlays = 0f;
+        for (int i = 0; i < dataString.Length; i++)
+        {
+            data[i] = int.Parse(dataString[i]);
+            totalPlays += data[i];
+        }
 
-		// Update data and UI
-		data[ending - 1]++;
-		totalPlays++;
-		float percent = 100f * data[ending - 1] / totalPlays;
-		endingDataText.GetComponent<TMP_Text>().text = percent.ToString() + "% of players arrived at this ending.";
-		endingDataText.SetActive(true);
+        // Update data and UI
+        data[ending - 1]++;
+        totalPlays++;
+        float percent = 100f * data[ending - 1] / totalPlays;
+        endingDataText.GetComponent<TMP_Text>().text = percent.ToString() + "% of players arrived at this ending.";
+        endingDataText.SetActive(true);
 
-		// Save data
-		dataString[ending - 1] = data[ending - 1].ToString();
-		string newData = "";
-		for (int i = 0; i < dataString.Length; i++)
-		{
-			newData += dataString[i] + ",";
-		}
-		newData = newData.Substring(0, newData.Length - 1);
+        // Save data
+        dataString[ending - 1] = data[ending - 1].ToString();
+        string newData = "";
+        for (int i = 0; i < dataString.Length; i++)
+        {
+            newData += dataString[i] + ",";
+        }
+        newData = newData.Substring(0, newData.Length - 1);
+
+        choiceButton.SetActive(true);
+
 		StartCoroutine(dataTracking.SaveData(newData));
 	}
+
+    public void DisplayChoices()
+    {
+        SceneManager.LoadScene("ChoiceScene");
+    }
 }
