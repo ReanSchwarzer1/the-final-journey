@@ -2668,7 +2668,7 @@ MonoBehaviour:
   actNumber: 3
   warningUI: {fileID: 624400754}
   pingUI: {fileID: 243917473}
-  devmode: 1
+  devmode: 0
   audioSource: {fileID: 1822347022}
   audioSource2: {fileID: 232009148}
   _buttonSFX: {fileID: 8300000, guid: f103335f5a8d7a04994fd177b757f076, type: 3}

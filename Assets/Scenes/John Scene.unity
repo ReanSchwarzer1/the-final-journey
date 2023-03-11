@@ -1027,5 +1027,21 @@ PrefabInstance:
       propertyPath: _pauseMenu
       value: 
       objectReference: {fileID: 2084105335}
+    - target: {fileID: 4569670495999383143, guid: fd34e14ce953f374bba5971472442400, type: 3}
+      propertyPath: debrisSprites.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4569670495999383143, guid: fd34e14ce953f374bba5971472442400, type: 3}
+      propertyPath: debrisSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 5aa1661154271a14aab5a94ecd5873e7, type: 3}
+    - target: {fileID: 4569670495999383143, guid: fd34e14ce953f374bba5971472442400, type: 3}
+      propertyPath: debrisSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: c4d16033903b385448d59357a9dad6b9, type: 3}
+    - target: {fileID: 4569670495999383143, guid: fd34e14ce953f374bba5971472442400, type: 3}
+      propertyPath: debrisSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 5aff940415e147a418f8a1fa91525b3b, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd34e14ce953f374bba5971472442400, type: 3}

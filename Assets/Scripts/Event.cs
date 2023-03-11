@@ -37,7 +37,7 @@ public class Event : MonoBehaviour
 
     // Fade the warning in and out 3 times
     private IEnumerator DisplayWarning()
-    {
+    {/*
 		// Lerp the alpha of the warning
 		warningColor.a = Mathf.Lerp(-0.25f, 1.25f, percentDone);
 		warning.GetComponent<SpriteRenderer>().color = warningColor;
@@ -53,13 +53,13 @@ public class Event : MonoBehaviour
         {
             isFadingIn = false;
         }
-
+        */
         // We are done warning the player after 3 times
-        if (numTimesFaded == 3)
-        {
+        //if (numTimesFaded == 3)
+        //{
             isWarningPlaying = false;
             Destroy(warning);
-        }
+        //}
 
         yield return null;
     }

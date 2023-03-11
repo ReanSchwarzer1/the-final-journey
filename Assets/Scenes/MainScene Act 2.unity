@@ -2854,7 +2854,7 @@ MonoBehaviour:
   actNumber: 2
   warningUI: {fileID: 624400754}
   pingUI: {fileID: 243917473}
-  devmode: 1
+  devmode: 0
   audioSource: {fileID: 1822347022}
   audioSource2: {fileID: 232009148}
   _buttonSFX: {fileID: 8300000, guid: f103335f5a8d7a04994fd177b757f076, type: 3}
@@ -2866,6 +2866,7 @@ MonoBehaviour:
   _narrationSpeed: 0.05
   _pauseMenu: {fileID: 1573277954}
   blackScreen: {fileID: 0}
+  endingDataText: {fileID: 0}
   endings: []
   _narrativeBlocks:
   - _narrativeText: That was close, what were those objects?
@@ -2998,7 +2999,7 @@ MonoBehaviour:
   - _narrativeText: ' W was my rock. When she held me, everything that was happening
       would melt away. *He begins to sob* '
     _choice1Text: ' W was my rock. When she held me, everything that was happening
-      would melt away. He begins to sob. '
+      would melt away.| He begins to sob. |'
     _choice1States: 20
     _choice2Text: Continue
     _choice2States: -1

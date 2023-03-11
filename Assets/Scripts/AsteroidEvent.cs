@@ -9,6 +9,7 @@ public class AsteroidEvent : Event
     [SerializeField] private GameObject asteroidPrefab;
 	[SerializeField] private Vector2 asteroidSpeed;
 	[SerializeField] private GameObject indicatorPrefab;
+    [SerializeField] private Sprite[] debrisSprites;
 	private List<GameObject> asteroids = new List<GameObject>();
     private Vector2 spawnPosition;
     private bool isSpawning = false;
@@ -127,7 +128,7 @@ public class AsteroidEvent : Event
 
 		asteroids[asteroids.Count - 1].GetComponent<Rigidbody2D>().velocity = asteroidSpeed;
         numAsteroidsSpawned++;
-
+        asteroids[asteroids.Count - 1].GetComponent<SpriteRenderer>().sprite = debrisSprites[Random.Range(0, 3)];
         isSpawning = false;
 
         yield return null;
