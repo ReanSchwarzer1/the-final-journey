@@ -216,14 +216,18 @@ public class GameManager : MonoBehaviour
 
 
                 
-                case 500:
-                    TriggerEnding(3);
-                    break;
+                
                 case 18:
-                    TriggerEnding(1);
+                    {
+                        TriggerEnding(1);
+                        Debug.Log("Ending 1 triggered");
+                    }
                     break;
                 case 19:
                     TriggerEnding(2);
+                    break;
+                case 500:
+                    TriggerEnding(3);
                     break;
             }
         }
